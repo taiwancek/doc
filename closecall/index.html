@@ -1,0 +1,635 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>CloseCall Project</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"><style>@import url('https://fonts.googleapis.com/css?family=Roboto:400,700|Inconsolata|Raleway:200');.hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}.right .hljs-comment{color:#969896}.right .css .hljs-class,.right .css .hljs-id,.right .css .hljs-pseudo,.right .hljs-attribute,.right .hljs-regexp,.right .hljs-tag,.right .hljs-variable,.right .html .hljs-doctype,.right .ruby .hljs-constant,.right .xml .hljs-doctype,.right .xml .hljs-pi,.right .xml .hljs-tag .hljs-title{color:#c66}.right .hljs-built_in,.right .hljs-constant,.right .hljs-literal,.right .hljs-number,.right .hljs-params,.right .hljs-pragma,.right .hljs-preprocessor{color:#de935f}.right .css .hljs-rule .hljs-attribute,.right .ruby .hljs-class .hljs-title{color:#f0c674}.right .hljs-header,.right .hljs-inheritance,.right .hljs-name,.right .hljs-string,.right .hljs-value,.right .ruby .hljs-symbol,.right .xml .hljs-cdata{color:#b5bd68}.right .css .hljs-hexcolor,.right .hljs-title{color:#8abeb7}.right .coffeescript .hljs-title,.right .hljs-function,.right .javascript .hljs-title,.right .perl .hljs-sub,.right .python .hljs-decorator,.right .python .hljs-title,.right .ruby .hljs-function .hljs-title,.right .ruby .hljs-title .hljs-keyword{color:#81a2be}.right .hljs-keyword,.right .javascript .hljs-function{color:#b294bb}.right .hljs{display:block;overflow-x:auto;background:#1d1f21;color:#c5c8c6;padding:.5em;-webkit-text-size-adjust:none}.right .coffeescript .javascript,.right .javascript .xml,.right .tex .hljs-formula,.right .xml .css,.right .xml .hljs-cdata,.right .xml .javascript,.right .xml .vbscript{opacity:.5}.hljs-comment,.hljs-quote{color:#7e7777}.hljs-attribute,.hljs-link,.hljs-name,.hljs-regexp,.hljs-selector-class,.hljs-selector-id,.hljs-tag,.hljs-template-variable,.hljs-variable{color:#ca4949}.hljs-built_in,.hljs-literal,.hljs-meta,.hljs-number,.hljs-params,.hljs-type{color:#b45a3c}.hljs-bullet,.hljs-string,.hljs-symbol{color:#4b8b8b}.hljs-section,.hljs-title{color:#7272ca}.hljs-keyword,.hljs-selector-tag{color:#8464c4}.hljs-addition,.hljs-deletion{color:#1b1818;display:inline-block;width:100%}.hljs-deletion{background-color:#ca4949}.hljs-addition{background-color:#4b8b8b}.hljs{display:block;overflow-x:auto;background:#1b1818;color:#8a8585;padding:.5em}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:700}.right .hljs-comment,.right .hljs-quote{color:#7e7777}.right .hljs-attribute,.right .hljs-link,.right .hljs-name,.right .hljs-regexp,.right .hljs-selector-class,.right .hljs-selector-id,.right .hljs-tag,.right .hljs-template-variable,.right .hljs-variable{color:#ca4949}.right .hljs-built_in,.right .hljs-literal,.right .hljs-meta,.right .hljs-number,.right .hljs-params,.right .hljs-type{color:#b45a3c}.right .hljs-bullet,.right .hljs-string,.right .hljs-symbol{color:#4b8b8b}.right .hljs-section,.right .hljs-title{color:#7272ca}.right .hljs-keyword,.right .hljs-selector-tag{color:#8464c4}.right .hljs-addition,.right .hljs-deletion{color:#1b1818;display:inline-block;width:100%}.right .hljs-deletion{background-color:#ca4949}.right .hljs-addition{background-color:#4b8b8b}.right .hljs{display:block;overflow-x:auto;background:#1b1818;color:#8a8585;padding:.5em}.right .hljs-emphasis{font-style:italic}.right .hljs-strong{font-weight:700}body{color:#888;background:#060606;font:400 14px / 1.42 'Roboto',Helvetica,sans-serif}header{border-bottom:1px solid #3c3c3c;margin-bottom:12px}h1,h2,h3,h4,h5{color:white;margin:12px 0}h1 .permalink,h2 .permalink,h3 .permalink,h4 .permalink,h5 .permalink{margin-left:0;opacity:0;transition:opacity .25s ease}h1:hover .permalink,h2:hover .permalink,h3:hover .permalink,h4:hover .permalink,h5:hover .permalink{opacity:1}.triple h1 .permalink,.triple h2 .permalink,.triple h3 .permalink,.triple h4 .permalink,.triple h5 .permalink{opacity:.15}.triple h1:hover .permalink,.triple h2:hover .permalink,.triple h3:hover .permalink,.triple h4:hover .permalink,.triple h5:hover .permalink{opacity:.15}h1{font:200 36px 'Raleway',Helvetica,sans-serif;font-size:36px}h2{font:200 36px 'Raleway',Helvetica,sans-serif;font-size:30px}h3{font-size:100%;text-transform:uppercase}h5{font-size:100%;font-weight:normal}p{margin:0 0 10px}p.choices{line-height:1.6}a{color:#2a9fd6;text-decoration:none}li p{margin:0}hr.split{border:0;height:1px;width:100%;padding-left:6px;margin:12px auto;background-image:linear-gradient(to right, rgba(136,136,136,0) 20%, rgba(136,136,136,0.2) 51.4%, rgba(136,136,136,0.2) 51.4%, rgba(136,136,136,0) 80%)}dl dt{float:left;width:130px;clear:left;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700}dl dd{margin-left:150px}blockquote{color:rgba(136,136,136,0.5);font-size:15.5px;padding:10px 20px;margin:12px 0;border-left:5px solid #282828}blockquote p:last-child{margin-bottom:0}pre{background-color:#1b1b1b;padding:12px;border:1px solid #282828;border-radius:6px;overflow:auto}pre code{color:#888;background-color:transparent;padding:0;border:none}code{color:#ddd;background-color:#444;font:'Inconsolata',monospace;padding:1px 4px;border:1px solid #282828;border-radius:3px}ul,ol{padding-left:2em}table{border-collapse:collapse;border-spacing:0;margin-bottom:12px}table tr:nth-child(2n){background-color:#010101}table th,table td{padding:6px 12px;border:1px solid #000}.text-muted{opacity:.5}.note,.warning{padding:.3em 1em;margin:1em 0;border-radius:2px;font-size:90%}.note h1,.warning h1,.note h2,.warning h2,.note h3,.warning h3,.note h4,.warning h4,.note h5,.warning h5,.note h6,.warning h6{font-family:200 36px 'Raleway',Helvetica,sans-serif;font-size:135%;font-weight:500}.note p,.warning p{margin:.5em 0}.note{color:#888;background-color:#191e10;border-left:4px solid #77b300}.note h1,.note h2,.note h3,.note h4,.note h5,.note h6{color:#77b300}.warning{color:#888;background-color:#1b1010;border-left:4px solid #900}.warning h1,.warning h2,.warning h3,.warning h4,.warning h5,.warning h6{color:#900}header{margin-top:24px}nav{position:fixed;top:24px;bottom:0;overflow-y:auto}nav .resource-group{padding:0}nav .resource-group .heading{position:relative}nav .resource-group .heading .chevron{position:absolute;top:12px;right:12px;opacity:.5}nav .resource-group .heading a{display:block;color:#888;opacity:.7;border-left:2px solid transparent;margin:0}nav .resource-group .heading a:hover{text-decoration:none;background-color:bad-color;border-left:2px solid #888}nav ul{list-style-type:none;padding-left:0}nav ul a{display:block;font-size:13px;color:rgba(136,136,136,0.7);padding:8px 12px;border-top:1px solid #2a2a2a;border-left:2px solid transparent;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}nav ul a:hover{text-decoration:none;background-color:bad-color;border-left:2px solid #888}nav ul>li{margin:0}nav ul>li:first-child{margin-top:-12px}nav ul>li:last-child{margin-bottom:-12px}nav ul ul a{padding-left:24px}nav ul ul li{margin:0}nav ul ul li:first-child{margin-top:0}nav ul ul li:last-child{margin-bottom:0}nav>div>div>ul>li:first-child>a{border-top:none}.preload *{transition:none !important}.pull-left{float:left}.pull-right{float:right}.badge{display:inline-block;float:right;min-width:10px;min-height:14px;padding:3px 7px;font-size:12px;color:#fff;background-color:#3c3c3c;border-radius:10px;margin:-2px 0}.badge.get{color:white;background-color:#9933cc}.badge.head{color:white;background-color:#9933cc}.badge.options{color:white;background-color:#9933cc}.badge.put{color:white;background-color:#ff8800}.badge.patch{color:white;background-color:#ff8800}.badge.post{color:white;background-color:#77b300}.badge.delete{color:white;background-color:#cc0000}.collapse-button{float:right}.collapse-button .close{display:none;color:#2a9fd6;cursor:pointer}.collapse-button .open{color:#2a9fd6;cursor:pointer}.collapse-button.show .close{display:inline}.collapse-button.show .open{display:none}.collapse-content{max-height:0;overflow:hidden;transition:max-height .3s ease-in-out}nav{width:220px}.container{max-width:940px;margin-left:auto;margin-right:auto}.container .row .content{margin-left:244px;width:696px}.container .row:after{content:'';display:block;clear:both}.container-fluid nav{width:22%}.container-fluid .row .content{margin-left:24%}.container-fluid.triple nav{width:16.5%;padding-right:1px}.container-fluid.triple .row .content{position:relative;margin-left:16.5%;padding-left:24px}.middle:before,.middle:after{content:'';display:table}.middle:after{clear:both}.middle{box-sizing:border-box;width:51.5%;padding-right:12px}.right{box-sizing:border-box;float:right;width:48.5%;padding-left:12px}.right a{color:#2a9fd6}.right h1,.right h2,.right h3,.right h4,.right h5,.right p,.right div{color:#888}.right pre{background-color:#222;border:1px solid #222}.right pre code{color:#888}.right .description{margin-top:12px}.triple .resource-heading{font-size:125%}.definition{margin-top:12px;margin-bottom:12px}.definition .method{font-weight:bold}.definition .method.get{color:#8a2eb8}.definition .method.head{color:#8a2eb8}.definition .method.options{color:#8a2eb8}.definition .method.post{color:#89b82e}.definition .method.put{color:#b8772e}.definition .method.patch{color:#b8772e}.definition .method.delete{color:#b82e2e}.definition .uri{word-break:break-all;word-wrap:break-word}.definition .hostname{opacity:.5}.example-names{background-color:#eee;padding:12px;border-radius:6px}.example-names .tab-button{cursor:pointer;color:#888;border:1px solid #ddd;padding:6px;margin-left:12px}.example-names .tab-button.active{background-color:#c8c8c8}.right .example-names{background-color:#101010}.right .example-names .tab-button{color:#888;border:1px solid #060606;border-radius:6px}.right .example-names .tab-button.active{background-color:#2a2a2a}#nav-background{position:fixed;left:0;top:0;bottom:0;width:16.5%;padding-right:14.4px;background-color:#060606;border-right:1px solid #060606;z-index:-1}#right-panel-background{position:absolute;right:-12px;top:-12px;bottom:-12px;width:48.6%;background-color:#1a1a1a;z-index:-1}@media (max-width:1200px){nav{width:198px}.container{max-width:840px}.container .row .content{margin-left:224px;width:606px}}@media (max-width:992px){nav{width:169.4px}.container{max-width:720px}.container .row .content{margin-left:194px;width:526px}}@media (max-width:768px){nav{display:none}.container{width:95%;max-width:none}.container .row .content,.container-fluid .row .content,.container-fluid.triple .row .content{margin-left:auto;margin-right:auto;width:95%}#nav-background{display:none}#right-panel-background{width:48.6%}}.back-to-top{position:fixed;z-index:1;bottom:0;right:24px;padding:4px 8px;color:rgba(136,136,136,0.5);background-color:#3c3c3c;text-decoration:none !important;border-top:1px solid #2a2a2a;border-left:1px solid #2a2a2a;border-right:1px solid #2a2a2a;border-top-left-radius:3px;border-top-right-radius:3px}.resource-group{padding:12px;margin-bottom:12px;background-color:#222;border:1px solid #2a2a2a;border-radius:6px}.resource-group h2.group-heading,.resource-group .heading a{padding:12px;margin:-12px -12px 12px -12px;background-color:#3c3c3c;border-bottom:1px solid #2a2a2a;border-top-left-radius:6px;border-top-right-radius:6px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.triple .content .resource-group{padding:0;border:none}.triple .content .resource-group h2.group-heading,.triple .content .resource-group .heading a{margin:0 0 12px 0;border:1px solid #2a2a2a}nav .resource-group .heading a{padding:12px;margin-bottom:0}nav .resource-group .collapse-content{padding:0}.action{margin-bottom:12px;padding:12px 12px 0 12px;overflow:hidden;border:1px solid transparent;border-radius:6px}.action h4.action-heading{padding:6px 12px;margin:-12px -12px 12px -12px;border-bottom:1px solid transparent;border-top-left-radius:6px;border-top-right-radius:6px;overflow:hidden}.action h4.action-heading .name{float:right;font-weight:normal;padding:6px 0}.action h4.action-heading .method{padding:6px 12px;margin-right:12px;border-radius:3px;display:inline-block}.action h4.action-heading .method.get{color:#fff;background-color:#5c1f7a}.action h4.action-heading .method.head{color:#fff;background-color:#5c1f7a}.action h4.action-heading .method.options{color:#fff;background-color:#5c1f7a}.action h4.action-heading .method.put{color:#fff;background-color:#995200}.action h4.action-heading .method.patch{color:#fff;background-color:#995200}.action h4.action-heading .method.post{color:#fff;background-color:#334d00}.action h4.action-heading .method.delete{color:#fff;background-color:#600}.action h4.action-heading code{color:#ddd;background-color:#2b2b2b;border-color:transparent;font-weight:normal;word-break:break-all;display:inline-block;margin-top:2px}.action dl.inner{padding-bottom:2px}.action .title{border-bottom:1px solid #222;margin:0 -12px -1px -12px;padding:12px}.action.get{border-color:#7a29a3}.action.get h4.action-heading{color:#5c1f7a;background:#9933cc;border-bottom-color:#7a29a3}.action.head{border-color:#7a29a3}.action.head h4.action-heading{color:#5c1f7a;background:#9933cc;border-bottom-color:#7a29a3}.action.options{border-color:#7a29a3}.action.options h4.action-heading{color:#5c1f7a;background:#9933cc;border-bottom-color:#7a29a3}.action.post{border-color:#558000}.action.post h4.action-heading{color:#334d00;background:#77b300;border-bottom-color:#558000}.action.put{border-color:#cc6d00}.action.put h4.action-heading{color:#995200;background:#ff8800;border-bottom-color:#cc6d00}.action.patch{border-color:#cc6d00}.action.patch h4.action-heading{color:#995200;background:#ff8800;border-bottom-color:#cc6d00}.action.delete{border-color:#900}.action.delete h4.action-heading{color:#600;background:#cc0000;border-bottom-color:#900}</style></head><body class="preload"><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><nav><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#top">Overview</a></div><div class="collapse-content"><ul><li><a href="#header-開發注意">開發注意</a></li></ul></div></div><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#observer事件定義">Observer事件定義</a></div><div class="collapse-content"><ul><li><a href="#header-事件">事件</a></li></ul></div></div><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#bleservice可用函數">BLEService可用函數</a></div><div class="collapse-content"><ul><li><a href="#header-bleservice">BLEService</a></li><li><a href="#header-anchor">Anchor</a></li><li><a href="#header-tag">Tag</a></li><li><a href="#header-ibeacon">iBeacon</a></li></ul></div></div><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#model">Model</a></div><div class="collapse-content"><ul><li><a href="#header-statusupdatemodel">StatusUpdateModel</a></li></ul></div></div><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#anchor-&amp;-tag-事件註冊範例">Anchor & Tag 事件註冊範例</a></div><div class="collapse-content"><ul><li><a href="#header-掃描anchor與tag裝置">掃描Anchor與Tag裝置</a></li><li><a href="#header-連結anchor與tag裝置">連結Anchor與Tag裝置</a></li><li><a href="#header-掃描與連結服務">掃描與連結服務</a></li><li><a href="#header-特徵變化通知">特徵變化通知</a></li><li><a href="#header-特徵寫入通知">特徵寫入通知</a></li><li><a href="#header-裝置rssi">裝置RSSI</a></li><li><a href="#header-ibeacon裝置掃描">iBeacon裝置掃描</a></li><li><a href="#header-ibeacon進入-出去觸發">iBeacon進入/出去觸發</a></li><li><a href="#header-ibeacon註冊通知">iBeacon註冊通知</a></li><li><a href="#header-ibeacon解除註冊通知">iBeacon解除註冊通知</a></li></ul></div></div><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#android-api-document">Android API Document</a></div><div class="collapse-content"><ul><li><a href="#header-get-last-connected-devices-info">Get last connected devices info</a></li><li><a href="#header-get-the-distance-(p3)-from-sharedpreferences">Get the distance (P3) from SharedPreferences</a></li></ul></div></div></nav><div class="content"><header><h1 id="top">CloseCall Project</h1></header><p>android開發記錄簿</p>
+<h2 id="header-開發注意">開發注意 <a class="permalink" href="#header-開發注意" aria-hidden="true">¶</a></h2>
+<ul>
+<li>對裝置進行特徵寫入，裝置會進入Busy狀態，在這時候進行第二次特徵寫入會直接返回。</li>
+</ul>
+<section id="observer事件定義" class="resource-group"><h2 class="group-heading">Observer事件定義 <a href="#observer事件定義" class="permalink">&para;</a></h2><h2 id="header-事件">事件 <a class="permalink" href="#header-事件" aria-hidden="true">¶</a></h2>
+<pre><code><span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">class</span> <span class="hljs-title">Event</span></span>
+{
+        <span class="hljs-regexp">/**UWB_ANCHOR UWB_TAG*/</span>
+        <span class="hljs-constant">ScanDevices</span>, <span class="hljs-regexp">//</span>傳回已掃描到的裝置
+        
+        <span class="hljs-constant">DeviceIsConnected</span>, <span class="hljs-regexp">//</span>裝置已經連線
+        <span class="hljs-constant">DeviceIsDisconnected</span>,<span class="hljs-regexp">//</span>裝置已經失聯
+        <span class="hljs-constant">ServicesDiscovered</span>, <span class="hljs-regexp">//</span>已經取得裝置所有服務
+       
+        <span class="hljs-constant">CharacteristicChanged</span>,<span class="hljs-regexp">//</span>已收到特徵變化通知
+        <span class="hljs-constant">CharacteristicWrite</span>, <span class="hljs-regexp">//</span>已完成特徵寫入
+        <span class="hljs-constant">CharacteristicRead</span>, <span class="hljs-regexp">//</span>已讀取特徵(現階段用不到)
+       
+        <span class="hljs-constant">ReadRemoteRssi</span>, <span class="hljs-regexp">//</span>已取得<span class="hljs-constant">RSSI</span>
+
+
+        
+        /**iBeacon*<span class="hljs-regexp">/
+        ScanIBeancon, /</span><span class="hljs-regexp">/傳回已掃描到的ibeacon
+        IBeaconRegisterRegionOk,/</span><span class="hljs-regexp">/
+        IBeaconRegisterRegionFail,/</span><span class="hljs-regexp">/
+        IBeaconUnregisterRegionOk,/</span><span class="hljs-regexp">/
+        IBeaconDidEnterRegion,/</span><span class="hljs-regexp">/ ibeacon已進入
+        IBeaconDidExitRegion/</span><span class="hljs-regexp">/ ibeacon已離開
+}
+</span></code></pre>
+</section><section id="bleservice可用函數" class="resource-group"><h2 class="group-heading">BLEService可用函數 <a href="#bleservice可用函數" class="permalink">&para;</a></h2><h2 id="header-bleservice">BLEService <a class="permalink" href="#header-bleservice" aria-hidden="true">¶</a></h2>
+<pre><code><span class="hljs-comment">//BLE裝置RSSI讀取時間間隔</span>
+mService?.updateRssiMillis = 500 //0.5秒
+
+//取得最後一次連結的Anchor Device Mac Address
+//回傳格式51:<span class="hljs-string">BA:</span><span class="hljs-string">E0:</span><span class="hljs-string">C8:</span><span class="hljs-number">35</span>:<span class="hljs-number">6</span>F 或 <span class="hljs-string">""</span>
+mService?.lastConnectMacAddressForAnchor()
+
+//取得最後一次連結的Tag Device Mac Address
+//回傳格式51:<span class="hljs-string">BA:</span><span class="hljs-string">E0:</span><span class="hljs-string">C8:</span><span class="hljs-number">35</span>:<span class="hljs-number">6</span>F 或 <span class="hljs-string">""</span>
+mService?.lastConnectMacAddressForTag()
+
+//停止Anchor and Tag連線(使用手動停止使用)，
+//並且將lastConnectMacAddressForAnchor與lastConnectMacAddressForTag清空
+mService?.disconnectAllUWBDevice()</code></pre>
+<h2 id="header-anchor">Anchor <a class="permalink" href="#header-anchor" aria-hidden="true">¶</a></h2>
+<pre><code>//掃描Anchor裝置
+mService?.scanDevices(<span class="hljs-string">"UWB_ANCHOR"</span>,<span class="hljs-number">5000</span>)
+
+//連結Anchor裝置
+mService?.connectAnchorDevice(device)
+
+//Anchor裝置是否為連線狀態
+mService?.bleMgr?.<span class="hljs-built_in">anchor</span>IsConnected()</code></pre>
+<h2 id="header-tag">Tag <a class="permalink" href="#header-tag" aria-hidden="true">¶</a></h2>
+<pre><code><span class="hljs-comment">//掃描Tag裝置</span>
+mService?.scanDevices(<span class="hljs-string">"UWB_TAG"</span>,<span class="hljs-number">5000</span>)
+
+<span class="hljs-comment">//連結Tag裝置</span>
+mService?.connectTagDevice(device)
+
+<span class="hljs-comment">//Tag裝置是否為連線狀態</span>
+mService?.bleMgr?.tagIsConnected()
+            
+<span class="hljs-comment">//配對Anchor Mac Address給Tag裝置,anchorMacAddress長度為 5 bytes</span>
+mService?.bleMgr?.tagDevice?.writeCharaForBondedTagInfo3A10(byteArrayOf(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>))
+
+<span class="hljs-comment">//開啟UWB(0:關閉,1:開啟),enable 1 byte</span>
+mService?.bleMgr?.tagDevice?.writeCharaForUWBEnable3A11(byteArrayOf(<span class="hljs-number">1</span>))
+
+<span class="hljs-comment">//設定OS類型(0:android,1:iOS)。type為 1 byte</span>
+mService?.bleMgr?.tagDevice?.writeCharaForAPPOSType3A13(byteArrayOf(<span class="hljs-number">1</span>))
+
+<span class="hljs-comment">//設定警報距離，最大值32767公分。distance為short</span>
+mService?.bleMgr?.tagDevice?.writeCharaForUWBAlarmRange3A12(<span class="hljs-number">2370</span>)
+
+<span class="hljs-comment">//註冊特徵通知</span>
+mService?.bleMgr?.tagDevice?.registerCharacteristicNotificationForStatusUpdate3A09()</code></pre>
+<h1 id="header-ibeacon">iBeacon <a class="permalink" href="#header-ibeacon" aria-hidden="true">¶</a></h1>
+<pre><code><span class="hljs-pi">//掃描iBeacon
+mService?.scanIbeacon(5000)
+
+//i</span>Beacon裝置註冊(方法一)
+val <span class="hljs-literal">it</span> = Intent(<span class="hljs-keyword">this</span><span class="hljs-property">@IBeaconActivity</span>, <span class="hljs-attribute">IBeaconService</span>::<span class="hljs-class"><span class="hljs-keyword">class</span>.<span class="hljs-title">java</span>)</span>
+<span class="hljs-literal">it</span>.putExtra(IBeaconService.IBEACON_ACTION, IBeaconService.IBEACON_ACTION_DELETE)
+<span class="hljs-literal">it</span>.putExtra(IBeaconService.IBEANCN_UUID, <span class="hljs-string">"9D410000-35D6-F4DD-BA60-E7BD8DC491C0"</span>)
+startService(<span class="hljs-literal">it</span>)
+
+<span class="hljs-pi">//iBeacon裝置註冊(方法二)
+mService?.registerRegion("9D410000-35D6-F4DD-BA60-E7BD8DC491C0")
+
+
+//i</span>Beacon裝置取消註冊(方法一)
+val <span class="hljs-literal">it</span> = Intent(<span class="hljs-keyword">this</span><span class="hljs-property">@IBeaconActivity</span>, <span class="hljs-attribute">IBeaconService</span>::<span class="hljs-class"><span class="hljs-keyword">class</span>.<span class="hljs-title">java</span>)</span>
+<span class="hljs-literal">it</span>.putExtra(IBeaconService.IBEACON_ACTION, IBeaconService.IBEACON_ACTION_ADD)
+<span class="hljs-literal">it</span>.putExtra(IBeaconService.IBEANCN_UUID, <span class="hljs-string">"9D410000-35D6-F4DD-BA60-E7BD8DC491C0"</span>)
+startService(<span class="hljs-literal">it</span>)
+
+<span class="hljs-pi">//iBeacon裝置取消註冊(方法二)
+mService?.unregisterRegion("9D410000-35D6-F4DD-BA60-E7BD8DC491C0")
+</span></code></pre>
+</section><section id="model" class="resource-group"><h2 class="group-heading">Model <a href="#model" class="permalink">&para;</a></h2><h2 id="header-statusupdatemodel">StatusUpdateModel <a class="permalink" href="#header-statusupdatemodel" aria-hidden="true">¶</a></h2>
+<ul>
+<li>UWB裝置StatusUpdate3A09特徵解析後的物件</li>
+</ul>
+<pre><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">StatusUpdateModel</span>(<span class="hljs-title">byteArray</span>: <span class="hljs-title">ByteArray</span>)
+</span>{
+    <span class="hljs-comment"><span class="markdown">/<span class="hljs-emphasis">**Sequence Number, value=1~255*</span>/</span></span>
+    <span class="hljs-keyword">var</span> sequence:ByteArray? = <span class="hljs-keyword">null</span>
+
+    <span class="hljs-comment"><span class="markdown">/<span class="hljs-emphasis">**UWB_ANCHOR’s UWB mac address, 5 bytes, Unique ID*</span>/</span></span>
+    <span class="hljs-keyword">var</span> anchorAddress:ByteArray?=<span class="hljs-keyword">null</span>
+
+    <span class="hljs-comment"><span class="markdown">/<span class="hljs-emphasis">**UWB量測距離開啟狀態, Value=1(On), 0(Off)*</span>/</span></span>
+    <span class="hljs-keyword">var</span> enable:ByteArray?=<span class="hljs-keyword">null</span>
+
+    <span class="hljs-comment"><span class="markdown">/<span class="hljs-emphasis">**UWB量測距離(cm), Value=0~65535 (cm)*</span>/</span></span>
+    <span class="hljs-keyword">var</span> distance:ByteArray?=<span class="hljs-keyword">null</span>
+
+    <span class="hljs-comment"><span class="markdown">/<span class="hljs-emphasis">**UWB_TAG’s UWB mac address, 5 bytes, Default= ff ff ff ff ff*</span>/</span></span>
+    <span class="hljs-keyword">var</span> tagAddress:ByteArray? = <span class="hljs-keyword">null</span>
+
+    <span class="hljs-keyword">var</span> parseOk = <span class="hljs-keyword">false</span>
+}</code></pre>
+</section><section id="anchor-&amp;-tag-事件註冊範例" class="resource-group"><h2 class="group-heading">Anchor & Tag 事件註冊範例 <a href="#anchor-&amp;-tag-事件註冊範例" class="permalink">&para;</a></h2><h2 id="header-掃描anchor與tag裝置">掃描Anchor與Tag裝置 <a class="permalink" href="#header-掃描anchor與tag裝置" aria-hidden="true">¶</a></h2>
+<pre><code><span class="hljs-function"><span class="hljs-keyword">fun</span> IBeaconService.<span class="hljs-title">testScanDevices</span><span class="hljs-params">()</span></span>
+{
+  scanDevices(<span class="hljs-string">"UWB_TAG"</span><span class="hljs-comment">/*過濾裝置名稱*/</span>, <span class="hljs-number">5000</span><span class="hljs-comment">/*5秒後自動停止*/</span>)
+}
+
+<span class="hljs-comment">//傳送裝置掃描結果</span>
+<span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">update</span><span class="hljs-params">(p0: <span class="hljs-typename">Observable?, p1: Any?</span>)</span></span>
+{
+      <span class="hljs-variable"><span class="hljs-keyword">val</span> data</span> = p1 <span class="hljs-keyword">as</span> BLEObservable.Data
+      <span class="hljs-keyword">when</span>(data.event){
+          BLEObservable.Event.ScanDevices-&gt;{
+              <span class="hljs-variable"><span class="hljs-keyword">val</span> devices</span> = data.obj <span class="hljs-keyword">as</span>?  HashMap<span class="hljs-type">&lt;String,BluetoothDevice&gt;</span>
+              devices?.values?.forEach {
+                    <span class="hljs-keyword">when</span>(it.name){
+                        BLEManager.DeviceType.Anchor.name-&gt;{
+                          <span class="hljs-comment">//連接Anchor裝置</span>
+                          connectAnchorDevice(it)
+                        }
+                        BLEManager.DeviceType.Tag.name-&gt;{
+                          <span class="hljs-comment">//連接Tag裝置</span>
+                          connectTagDevice(it)
+                        }
+                    }
+              }
+          }
+      }
+}</code></pre>
+<h2 id="header-連結anchor與tag裝置">連結Anchor與Tag裝置 <a class="permalink" href="#header-連結anchor與tag裝置" aria-hidden="true">¶</a></h2>
+<pre><code>//連接裝置請參考上方回傳裝置區塊
+
+
+//傳回裝置連接結果
+<span class="hljs-title">override</span> fun update(p0: <span class="hljs-type">Observable</span>?, p1: <span class="hljs-type">Any</span>?)
+{
+      val <span class="hljs-typedef"><span class="hljs-keyword">data</span> = p1 as <span class="hljs-type">BLEObservable</span>.<span class="hljs-type">Data</span></span>
+      when(<span class="hljs-typedef"><span class="hljs-keyword">data</span>.event)<span class="hljs-container">{
+            <span class="hljs-type">BLEObservable</span>.<span class="hljs-type">Event</span>.<span class="hljs-type">DeviceIsConnected</span>-&gt;{
+                <span class="hljs-title">when</span>(<span class="hljs-title">data</span>.<span class="hljs-title">deviceType</span>){
+                    <span class="hljs-type">BLEManager</span>.<span class="hljs-type">DeviceType</span>.<span class="hljs-type">Anchor</span>-&gt;{
+                        //連上後會自動掃瞄服務與特徵
+                        <span class="hljs-type">Log</span>.<span class="hljs-title">i</span>("<span class="hljs-type">BLe</span>","<span class="hljs-type">Anchor</span>裝置已經連上")
+                    }</span></span>
+                    <span class="hljs-type">BLEManager</span>.<span class="hljs-type">DeviceType</span>.<span class="hljs-type">Tag</span>-&gt;{
+                        //連上後會自動掃瞄服務與特徵
+                        <span class="hljs-type">Log</span>.i(<span class="hljs-string">"BLe"</span>,<span class="hljs-string">"Tag裝置已經連上"</span>)
+                    }
+                }
+            }
+
+            <span class="hljs-type">BLEObservable</span>.<span class="hljs-type">Event</span>.<span class="hljs-type">DeviceIsDisconnected</span>-&gt;{
+                when(<span class="hljs-typedef"><span class="hljs-keyword">data</span>.deviceType)<span class="hljs-container">{
+                    <span class="hljs-type">BLEManager</span>.<span class="hljs-type">DeviceType</span>.<span class="hljs-type">Anchor</span>-&gt;{
+                        <span class="hljs-type">Log</span>.<span class="hljs-title">i</span>("<span class="hljs-type">BLe</span>","<span class="hljs-type">Anchor</span>裝置已經失聯")
+                    }</span></span>
+                    <span class="hljs-type">BLEManager</span>.<span class="hljs-type">DeviceType</span>.<span class="hljs-type">Tag</span>-&gt;{
+                        <span class="hljs-type">Log</span>.i(<span class="hljs-string">"BLe"</span>,<span class="hljs-string">"Tag裝置已經連失聯"</span>)
+                    }
+                }
+            }
+      }      
+}</code></pre>
+<h2 id="header-掃描與連結服務">掃描與連結服務 <a class="permalink" href="#header-掃描與連結服務" aria-hidden="true">¶</a></h2>
+<pre><code><span class="hljs-comment">//當裝置連上後，會自動掃瞄與連結服務以及註冊StatusUpdate通知</span>
+
+
+<span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">update</span><span class="hljs-params">(p0: <span class="hljs-typename">Observable?, p1: Any?</span>)</span></span>
+{
+      <span class="hljs-variable"><span class="hljs-keyword">val</span> data</span> = p1 <span class="hljs-keyword">as</span> BLEObservable.Data
+      <span class="hljs-keyword">when</span>(data.event){
+            BLEObservable.Event.ServicesDiscovered-&gt;{
+                <span class="hljs-keyword">if</span>(bleMgr.anchorIsConnected() &amp;&amp; bleMgr.tagIsConnected()){
+                    <span class="hljs-comment">//顯示UI上的裝置</span>
+                    Log.i(<span class="hljs-string">"BLE"</span>,<span class="hljs-string">"Anchor and Tag裝置都已經連上"</span>)
+                }<span class="hljs-keyword">else</span>{
+                    <span class="hljs-comment">//隱藏UI上的裝置</span>
+                    Log.i(<span class="hljs-string">"BLe"</span>,<span class="hljs-string">"Anchor連接狀態:${bleMgr.anchorIsConnected()}, Tag連接狀態:${bleMgr.tagIsConnected()}"</span>)
+                }
+            }
+      }
+}</code></pre>
+<h2 id="header-特徵變化通知">特徵變化通知 <a class="permalink" href="#header-特徵變化通知" aria-hidden="true">¶</a></h2>
+<pre><code><span class="hljs-comment">//只會註冊Tage裝置</span>
+<span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">update</span><span class="hljs-params">(p0: <span class="hljs-typename">Observable?, p1: Any?</span>)</span></span>
+{
+      <span class="hljs-variable"><span class="hljs-keyword">val</span> data</span> = p1 <span class="hljs-keyword">as</span> BLEObservable.Data
+      <span class="hljs-keyword">when</span>(data.event){
+            BLEObservable.Event.CharacteristicChanged-&gt;{
+                <span class="hljs-keyword">when</span>(data.obj){
+                    <span class="hljs-keyword">is</span> StatusUpdateModel-&gt;{<span class="hljs-comment">//StatusUpdate3A09通知</span>
+                        <span class="hljs-variable"><span class="hljs-keyword">val</span> obj</span> = data.obj <span class="hljs-keyword">as</span> StatusUpdateModel
+                        Log.i(<span class="hljs-string">"BLE"</span>,<span class="hljs-string">"sequenceInt:${obj.toLong(obj.sequence)},"</span> +
+                                    <span class="hljs-string">"anchorAddress:${obj.toLong(obj.anchorAddress)},"</span> +
+                                    <span class="hljs-string">"enable:${obj.toLong(obj.enable)},"</span> +
+                                    <span class="hljs-string">"distance:${obj.toLong(obj.distance)},"</span> +
+                                    <span class="hljs-string">"tagAddress:${obj.toLong(obj.tagAddress)}"</span>)
+                    }
+                }
+            }
+      }
+}</code></pre>
+<h2 id="header-特徵寫入通知">特徵寫入通知 <a class="permalink" href="#header-特徵寫入通知" aria-hidden="true">¶</a></h2>
+<pre><code>override fun <span class="hljs-operator"><span class="hljs-keyword">update</span>(p0: Observable?, p1: <span class="hljs-keyword">Any</span>?)
+{
+    val obj = <span class="hljs-keyword">data</span>.obj <span class="hljs-keyword">as</span>? CharacteristicWriteModel
+    val <span class="hljs-keyword">data</span> = p1 <span class="hljs-keyword">as</span> BLEObservable.<span class="hljs-keyword">Data</span>
+    <span class="hljs-keyword">when</span>(<span class="hljs-keyword">data</span>.<span class="hljs-keyword">event</span>){
+       BLEObservable.<span class="hljs-keyword">Event</span>.CharacteristicWrite-&gt;{
+          
+          <span class="hljs-keyword">when</span>(<span class="hljs-keyword">data</span>.deviceType){
+            BLEManager.DeviceType.UWB_ANCHOR -&gt;{
+              <span class="hljs-keyword">when</span>(obj?.<span class="hljs-keyword">uuid</span>){
+                  TagDevice.Service3B02.Characteristic.BondedTagInfo3A10-&gt;{
+
+                  }
+                  TagDevice.Service3B02.Characteristic.UWBAlarmRange3A12-&gt;{
+
+                  }
+                  TagDevice.Service3B02.Characteristic.UWBEnable3A11-&gt;{
+
+                  }
+              }
+            } 
+            BLEManager.DeviceType.UWB_TAG -&gt;{
+                  <span class="hljs-keyword">when</span>(obj?.<span class="hljs-keyword">uuid</span>){
+                      TagDevice.Service3B02.Characteristic.BondedTagInfo3A10-&gt;{
+                          <span class="hljs-keyword">if</span>(obj?.isOk){
+                              <span class="hljs-keyword">Log</span>.<span class="hljs-keyword">i</span>(<span class="hljs-string">"BLE"</span>,<span class="hljs-string">"BondedTagInfo3A10 寫入成功"</span>)
+                          }<span class="hljs-keyword">else</span>{
+                              <span class="hljs-keyword">Log</span>.<span class="hljs-keyword">i</span>(<span class="hljs-string">"BLE"</span>,<span class="hljs-string">"BondedTagInfo3A10 寫入失敗"</span>)
+                          }
+                      }
+                      TagDevice.Service3B02.Characteristic.APPOSType3A13-&gt;{
+                          <span class="hljs-keyword">if</span>(obj?.isOk){
+                              <span class="hljs-keyword">Log</span>.<span class="hljs-keyword">i</span>(<span class="hljs-string">"BLE"</span>,<span class="hljs-string">"APPOSType3A13 寫入成功"</span>)
+                          }<span class="hljs-keyword">else</span>{
+                              <span class="hljs-keyword">Log</span>.<span class="hljs-keyword">i</span>(<span class="hljs-string">"BLE"</span>,<span class="hljs-string">"APPOSType3A13 寫入失敗"</span>)
+                          }
+                      }
+                      TagDevice.Service3B02.Characteristic.UWBAlarmRange3A12-&gt;{
+                          <span class="hljs-keyword">if</span>(obj?.isOk){
+                              <span class="hljs-keyword">Log</span>.<span class="hljs-keyword">i</span>(<span class="hljs-string">"BLE"</span>,<span class="hljs-string">"UWBAlarmRange3A12 寫入成功"</span>)
+                          }<span class="hljs-keyword">else</span>{
+                              <span class="hljs-keyword">Log</span>.<span class="hljs-keyword">i</span>(<span class="hljs-string">"BLE"</span>,<span class="hljs-string">"UWBAlarmRange3A12 寫入失敗"</span>)
+                          }
+                      }
+                      TagDevice.Service3B02.Characteristic.UWBEnable3A11-&gt;{
+                          <span class="hljs-keyword">if</span>(obj?.isOk){
+                             <span class="hljs-keyword">Log</span>.<span class="hljs-keyword">i</span>(<span class="hljs-string">"BLE"</span>,<span class="hljs-string">"UWBEnable3A11 寫入成功"</span>)
+                          }<span class="hljs-keyword">else</span>{
+                             <span class="hljs-keyword">Log</span>.<span class="hljs-keyword">i</span>(<span class="hljs-string">"BLE"</span>,<span class="hljs-string">"UWBEnable3A11 寫入失敗"</span>)
+                          }
+                      }
+                  }
+            }
+          }
+      }
+    }  
+}         
+</span></code></pre>
+<h2 id="header-裝置rssi">裝置RSSI <a class="permalink" href="#header-裝置rssi" aria-hidden="true">¶</a></h2>
+<pre><code>override fun <span class="hljs-operator"><span class="hljs-keyword">update</span>(p0: Observable?, p1: <span class="hljs-keyword">Any</span>?)
+{
+      val <span class="hljs-keyword">data</span> = p1 <span class="hljs-keyword">as</span> BLEObservable.<span class="hljs-keyword">Data</span>
+      <span class="hljs-keyword">when</span>(<span class="hljs-keyword">data</span>.<span class="hljs-keyword">event</span>){
+           BLEObservable.<span class="hljs-keyword">Event</span>.ReadRemoteRssi-&gt;{
+               val rssi = <span class="hljs-keyword">data</span>.obj <span class="hljs-keyword">as</span>? <span class="hljs-keyword">Double</span> ?: <span class="hljs-number">0</span>
+               <span class="hljs-keyword">when</span>(<span class="hljs-keyword">data</span>.deviceType){
+                    BLEManager.DeviceType.UWB_ANCHOR -&gt;{
+                        <span class="hljs-keyword">Log</span>.<span class="hljs-keyword">i</span>(<span class="hljs-string">"BLE"</span>,<span class="hljs-string">"Anchor RSSI:${rssi}"</span>)
+                        startAnchorUWBIfNeed(rssi)
+                    }
+
+                    BLEManager.DeviceType.UWB_TAG -&gt;{
+                        <span class="hljs-keyword">Log</span>.<span class="hljs-keyword">i</span>(<span class="hljs-string">"BLE"</span>,<span class="hljs-string">"Tag RSSI:${rssi}"</span>)
+                        startTagUWBIfNeed(rssi)
+                    }
+                }
+            }
+      }      
+}         
+</span></code></pre>
+<h2 id="header-ibeacon裝置掃描">iBeacon裝置掃描 <a class="permalink" href="#header-ibeacon裝置掃描" aria-hidden="true">¶</a></h2>
+<pre><code><span class="hljs-comment">//掃描iBeacon</span>
+mService?.scanIbeacon(<span class="hljs-number">5000</span>)
+
+
+<span class="hljs-comment">//傳回已經掃到的iBeacon</span>
+<span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">update</span><span class="hljs-params">(p0: <span class="hljs-typename">Observable?, p1: Any?</span>)</span></span>
+{
+      <span class="hljs-variable"><span class="hljs-keyword">val</span> data</span> = p1 <span class="hljs-keyword">as</span> BLEObservable.Data
+      <span class="hljs-keyword">when</span>(data.event){
+            BLEObservable.Event.ScanIBeancon-&gt;{
+                <span class="hljs-variable"><span class="hljs-keyword">val</span> devices</span> = data.obj <span class="hljs-keyword">as</span>? HashMap<span class="hljs-type">&lt;String, IBeaconModel&gt;</span>
+                devices?.values?.forEach {
+                    Log.i(<span class="hljs-string">"BLE"</span>,<span class="hljs-string">"uuid:${it.uuid},"</span> +
+                                <span class="hljs-string">"major:${it.major},"</span> +
+                                <span class="hljs-string">"minor:${it.minor}"</span>)
+                }
+            }
+      }
+}</code></pre>
+<h2 id="header-ibeacon進入-出去觸發">iBeacon進入/出去觸發 <a class="permalink" href="#header-ibeacon進入-出去觸發" aria-hidden="true">¶</a></h2>
+<pre><code>override fun <span class="hljs-operator"><span class="hljs-keyword">update</span>(p0: Observable?, p1: <span class="hljs-keyword">Any</span>?)
+{
+      val <span class="hljs-keyword">data</span> = p1 <span class="hljs-keyword">as</span> BLEObservable.<span class="hljs-keyword">Data</span>
+      <span class="hljs-keyword">when</span>(<span class="hljs-keyword">data</span>.<span class="hljs-keyword">event</span>){
+            BLEObservable.<span class="hljs-keyword">Event</span>.IBeaconDidEnterRegion-&gt;{
+                val region = <span class="hljs-keyword">data</span>.obj <span class="hljs-keyword">as</span>? Region
+                <span class="hljs-keyword">Log</span>.<span class="hljs-keyword">i</span>(<span class="hljs-string">"BLE"</span>,<span class="hljs-string">"uuid:${region?.id1},"</span> +
+                            <span class="hljs-string">"major:${region?.id2},"</span> +
+                            <span class="hljs-string">"minor${region?.id3}"</span>)
+            }
+
+            BLEObservable.<span class="hljs-keyword">Event</span>.IBeaconDidExitRegion-&gt;{
+                val region = <span class="hljs-keyword">data</span>.obj <span class="hljs-keyword">as</span>? Region
+                <span class="hljs-keyword">Log</span>.<span class="hljs-keyword">i</span>(<span class="hljs-string">"BLE"</span>,<span class="hljs-string">"uuid:${region?.id1},"</span> +
+                            <span class="hljs-string">"major:${region?.id2},"</span> +
+                            <span class="hljs-string">"minor${region?.id3}"</span>)   
+            }
+      }
+}
+
+</span></code></pre>
+<h2 id="header-ibeacon註冊通知">iBeacon註冊通知 <a class="permalink" href="#header-ibeacon註冊通知" aria-hidden="true">¶</a></h2>
+<pre><code>override fun <span class="hljs-operator"><span class="hljs-keyword">update</span>(p0: Observable?, p1: <span class="hljs-keyword">Any</span>?)
+{
+      val <span class="hljs-keyword">data</span> = p1 <span class="hljs-keyword">as</span> BLEObservable.<span class="hljs-keyword">Data</span>
+      <span class="hljs-keyword">when</span>(<span class="hljs-keyword">data</span>.<span class="hljs-keyword">event</span>){
+            BLEObservable.<span class="hljs-keyword">Event</span>.IBeaconRegisterRegionOk-&gt;{
+                val region = <span class="hljs-keyword">data</span>.obj <span class="hljs-keyword">as</span>? Region
+                <span class="hljs-keyword">Log</span>.<span class="hljs-keyword">i</span>(<span class="hljs-string">"BLE"</span>,<span class="hljs-string">"uuid:${region?.id1},"</span> +
+                            <span class="hljs-string">"major:${region?.id2},"</span> +
+                            <span class="hljs-string">"minor${region?.id3}"</span>)
+            }
+
+            BLEObservable.<span class="hljs-keyword">Event</span>.IBeaconRegisterRegionFail-&gt;{
+                val region = <span class="hljs-keyword">data</span>.obj <span class="hljs-keyword">as</span>? Region
+                <span class="hljs-keyword">Log</span>.<span class="hljs-keyword">i</span>(<span class="hljs-string">"BLE"</span>,<span class="hljs-string">"uuid:${region?.id1},"</span> +
+                            <span class="hljs-string">"major:${region?.id2},"</span> +
+                            <span class="hljs-string">"minor${region?.id3}"</span>)
+            }
+      }
+}
+</span></code></pre>
+<h1 id="header-ibeacon解除註冊通知">iBeacon解除註冊通知 <a class="permalink" href="#header-ibeacon解除註冊通知" aria-hidden="true">¶</a></h1>
+<pre><code>override fun <span class="hljs-operator"><span class="hljs-keyword">update</span>(p0: Observable?, p1: <span class="hljs-keyword">Any</span>?)
+{
+      val <span class="hljs-keyword">data</span> = p1 <span class="hljs-keyword">as</span> BLEObservable.<span class="hljs-keyword">Data</span>
+      <span class="hljs-keyword">when</span>(<span class="hljs-keyword">data</span>.<span class="hljs-keyword">event</span>){
+            BLEObservable.<span class="hljs-keyword">Event</span>.IBeaconUnregisterRegionOk-&gt;{
+                val region = <span class="hljs-keyword">data</span>.obj <span class="hljs-keyword">as</span>? Region
+                <span class="hljs-keyword">Log</span>.<span class="hljs-keyword">i</span>(<span class="hljs-string">"BLE"</span>,<span class="hljs-string">"uuid:${region?.id1},"</span> +
+                            <span class="hljs-string">"major:${region?.id2},"</span> +
+                            <span class="hljs-string">"minor${region?.id3}"</span>)
+            }
+
+            BLEObservable.<span class="hljs-keyword">Event</span>.IBeaconRegisterRegionFail-&gt;{
+                val region = <span class="hljs-keyword">data</span>.obj <span class="hljs-keyword">as</span>? Region
+                <span class="hljs-keyword">Log</span>.<span class="hljs-keyword">i</span>(<span class="hljs-string">"BLE"</span>,<span class="hljs-string">"uuid:${region?.id1},"</span> +
+                            <span class="hljs-string">"major:${region?.id2},"</span> +
+                            <span class="hljs-string">"minor${region?.id3}"</span>)
+            }
+      }
+}
+</span></code></pre>
+</section><section id="android-api-document" class="resource-group"><h2 class="group-heading">Android API Document <a href="#android-api-document" class="permalink">&para;</a></h2><p>Example code was shown with Kotlin</p>
+<h2 id="header-get-last-connected-devices-info">Get last connected devices info <a class="permalink" href="#header-get-last-connected-devices-info" aria-hidden="true">¶</a></h2>
+<pre><code>val <span class="hljs-built_in">cursor</span> = contentResolver.query(ExContract.CONTENT_URI, <span class="hljs-keyword">null</span>, <span class="hljs-keyword">null</span>, <span class="hljs-keyword">null</span>, <span class="hljs-keyword">null</span>)
+<span class="hljs-keyword">if</span> (<span class="hljs-built_in">cursor</span> != <span class="hljs-keyword">null</span>) {
+    <span class="hljs-keyword">try</span> {
+        <span class="hljs-comment">// Don't get index in the loop condition. Because the performance is poor.</span>
+        val uuidIdx = <span class="hljs-built_in">cursor</span>.getColumnIndex(SavedBeaconsTable.UUID)
+
+        <span class="hljs-keyword">while</span> (<span class="hljs-built_in">cursor</span> != <span class="hljs-keyword">null</span> &amp;&amp; <span class="hljs-built_in">cursor</span>.moveToNext()) {
+            val uuid = <span class="hljs-built_in">cursor</span>.getString(uuidIdx)
+            ...
+        }
+    } <span class="hljs-keyword">finally</span> {
+        <span class="hljs-comment">// For solve memory leak issue.</span>
+        <span class="hljs-built_in">cursor</span>.close()
+    }
+}</code></pre>
+<h2 id="header-get-the-distance-(p3)-from-sharedpreferences">Get the distance (P3) from SharedPreferences <a class="permalink" href="#header-get-the-distance-(p3)-from-sharedpreferences" aria-hidden="true">¶</a></h2>
+<pre><code>val distance = PrefsHandler.<span class="hljs-function"><span class="hljs-title">getWarningDistance</span><span class="hljs-params">(applicationContext)</span></span></code></pre>
+</section></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 23 Feb 2018</p><script>/* eslint-env browser */
+/* eslint quotes: [2, "single"] */
+'use strict';
+
+/*
+  Determine if a string ends with another string.
+*/
+function endsWith(str, suffix) {
+    return str.indexOf(suffix, str.length - suffix.length) !== -1;
+}
+
+/*
+  Get a list of direct child elements by class name.
+*/
+function childrenByClass(element, name) {
+  var filtered = [];
+
+  for (var i = 0; i < element.children.length; i++) {
+    var child = element.children[i];
+    var classNames = child.className.split(' ');
+    if (classNames.indexOf(name) !== -1) {
+      filtered.push(child);
+    }
+  }
+
+  return filtered;
+}
+
+/*
+  Get an array [width, height] of the window.
+*/
+function getWindowDimensions() {
+  var w = window,
+      d = document,
+      e = d.documentElement,
+      g = d.body,
+      x = w.innerWidth || e.clientWidth || g.clientWidth,
+      y = w.innerHeight || e.clientHeight || g.clientHeight;
+
+  return [x, y];
+}
+
+/*
+  Collapse or show a request/response example.
+*/
+function toggleCollapseButton(event) {
+    var button = event.target.parentNode;
+    var content = button.parentNode.nextSibling;
+    var inner = content.children[0];
+
+    if (button.className.indexOf('collapse-button') === -1) {
+      // Clicked without hitting the right element?
+      return;
+    }
+
+    if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+        // Currently showing, so let's hide it
+        button.className = 'collapse-button';
+        content.style.maxHeight = '0px';
+    } else {
+        // Currently hidden, so let's show it
+        button.className = 'collapse-button show';
+        content.style.maxHeight = inner.offsetHeight + 12 + 'px';
+    }
+}
+
+function toggleTabButton(event) {
+    var i, index;
+    var button = event.target;
+
+    // Get index of the current button.
+    var buttons = childrenByClass(button.parentNode, 'tab-button');
+    for (i = 0; i < buttons.length; i++) {
+        if (buttons[i] === button) {
+            index = i;
+            button.className = 'tab-button active';
+        } else {
+            buttons[i].className = 'tab-button';
+        }
+    }
+
+    // Hide other tabs and show this one.
+    var tabs = childrenByClass(button.parentNode.parentNode, 'tab');
+    for (i = 0; i < tabs.length; i++) {
+        if (i === index) {
+            tabs[i].style.display = 'block';
+        } else {
+            tabs[i].style.display = 'none';
+        }
+    }
+}
+
+/*
+  Collapse or show a navigation menu. It will not be hidden unless it
+  is currently selected or `force` has been passed.
+*/
+function toggleCollapseNav(event, force) {
+    var heading = event.target.parentNode;
+    var content = heading.nextSibling;
+    var inner = content.children[0];
+
+    if (heading.className.indexOf('heading') === -1) {
+      // Clicked without hitting the right element?
+      return;
+    }
+
+    if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+      // Currently showing, so let's hide it, but only if this nav item
+      // is already selected. This prevents newly selected items from
+      // collapsing in an annoying fashion.
+      if (force || window.location.hash && endsWith(event.target.href, window.location.hash)) {
+        content.style.maxHeight = '0px';
+      }
+    } else {
+      // Currently hidden, so let's show it
+      content.style.maxHeight = inner.offsetHeight + 12 + 'px';
+    }
+}
+
+/*
+  Refresh the page after a live update from the server. This only
+  works in live preview mode (using the `--server` parameter).
+*/
+function refresh(body) {
+    document.querySelector('body').className = 'preload';
+    document.body.innerHTML = body;
+
+    // Re-initialize the page
+    init();
+    autoCollapse();
+
+    document.querySelector('body').className = '';
+}
+
+/*
+  Determine which navigation items should be auto-collapsed to show as many
+  as possible on the screen, based on the current window height. This also
+  collapses them.
+*/
+function autoCollapse() {
+  var windowHeight = getWindowDimensions()[1];
+  var itemsHeight = 64; /* Account for some padding */
+  var itemsArray = Array.prototype.slice.call(
+    document.querySelectorAll('nav .resource-group .heading'));
+
+  // Get the total height of the navigation items
+  itemsArray.forEach(function (item) {
+    itemsHeight += item.parentNode.offsetHeight;
+  });
+
+  // Should we auto-collapse any nav items? Try to find the smallest item
+  // that can be collapsed to show all items on the screen. If not possible,
+  // then collapse the largest item and do it again. First, sort the items
+  // by height from smallest to largest.
+  var sortedItems = itemsArray.sort(function (a, b) {
+    return a.parentNode.offsetHeight - b.parentNode.offsetHeight;
+  });
+
+  while (sortedItems.length && itemsHeight > windowHeight) {
+    for (var i = 0; i < sortedItems.length; i++) {
+      // Will collapsing this item help?
+      var itemHeight = sortedItems[i].nextSibling.offsetHeight;
+      if ((itemsHeight - itemHeight <= windowHeight) || i === sortedItems.length - 1) {
+        // It will, so let's collapse it, remove its content height from
+        // our total and then remove it from our list of candidates
+        // that can be collapsed.
+        itemsHeight -= itemHeight;
+        toggleCollapseNav({target: sortedItems[i].children[0]}, true);
+        sortedItems.splice(i, 1);
+        break;
+      }
+    }
+  }
+}
+
+/*
+  Initialize the interactive functionality of the page.
+*/
+function init() {
+    var i, j;
+
+    // Make collapse buttons clickable
+    var buttons = document.querySelectorAll('.collapse-button');
+    for (i = 0; i < buttons.length; i++) {
+        buttons[i].onclick = toggleCollapseButton;
+
+        // Show by default? Then toggle now.
+        if (buttons[i].className.indexOf('show') !== -1) {
+            toggleCollapseButton({target: buttons[i].children[0]});
+        }
+    }
+
+    var responseCodes = document.querySelectorAll('.example-names');
+    for (i = 0; i < responseCodes.length; i++) {
+        var tabButtons = childrenByClass(responseCodes[i], 'tab-button');
+        for (j = 0; j < tabButtons.length; j++) {
+            tabButtons[j].onclick = toggleTabButton;
+
+            // Show by default?
+            if (j === 0) {
+                toggleTabButton({target: tabButtons[j]});
+            }
+        }
+    }
+
+    // Make nav items clickable to collapse/expand their content.
+    var navItems = document.querySelectorAll('nav .resource-group .heading');
+    for (i = 0; i < navItems.length; i++) {
+        navItems[i].onclick = toggleCollapseNav;
+
+        // Show all by default
+        toggleCollapseNav({target: navItems[i].children[0]});
+    }
+}
+
+// Initial call to set up buttons
+init();
+
+window.onload = function () {
+    autoCollapse();
+    // Remove the `preload` class to enable animations
+    document.querySelector('body').className = '';
+};
+</script></body></html>
