@@ -2,6 +2,4 @@
  - <note>
        <version>1</version>
        <url>Jani</from>
-       <heading>Reminder</heading>
-       <body>Don't forget me this weekend!</body>
    </note> 
