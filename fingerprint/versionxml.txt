@@ -1,19 +1,7 @@
-1. switch off再on之後，無法重新連線
-a. 出現之前的值（connected/ RSSI 一樣/ 距離一樣）就算實際狀態為非連線
-b. 無法再與anchor/tag連線，就算reset anchor/tag也不行。需要把app從背景移除，重新開啟後就可以恢復連線動作。
-
-建議：當switch off之後再on，app是否可以像是重新開啟一樣動作？重新進行連接。顯示也是顯示連接後的數值。
-
-2. tag端若斷電，警示的反應有點慢
-a. 斷電之後的connected轉變為not connect的狀態有點慢＝>系統端的限制
-b. 雖然已經是no connect，但螢幕顯示還是 connected
-b. rssi維持在斷電前的讀值，沒有變為0=>可以在沒有更新rssi讀值時(例如2秒之內都沒有讀值），就判斷為o
-c. uwb的距離應該要變為N/A
-
-3. anchor端若斷電的狀況
-a. tag端的rssi值也會跟著不變？
-b. uwb的距離也不變？應該要變為 N/A 才對
-
-4. 出現螢幕數值狀態顯示都是不動的狀態，但實際上將anchor與tag的距離拉遠，警告程序還是可以成功觸發。
-看到一次，還在研究如何再現此現象中...
-
+ <?xml version="1.0" encoding="UTF-8"?>
+ - <note>
+       <to>Tove</to>
+       <from>Jani</from>
+       <heading>Reminder</heading>
+       <body>Don't forget me this weekend!</body>
+   </note> 
