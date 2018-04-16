@@ -1,5 +1,4 @@
- <?xml version="1.0" encoding="UTF-8"?>
- - <note>
-       <version>1</version>
-       <url>https://taiwancek.github.io/doc/fingerprint/ota_0.bin</url>
-   </note> 
+{
+   	"vesrion":1,
+   	"url": https://taiwancek.github.io/doc/fingerprint/ota_0.bin
+}
