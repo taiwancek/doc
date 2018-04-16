@@ -1,7 +1,7 @@
  <?xml version="1.0" encoding="UTF-8"?>
  - <note>
-       <version>Tove</to>
-       <from>Jani</from>
+       <version>1</version>
+       <url>Jani</from>
        <heading>Reminder</heading>
        <body>Don't forget me this weekend!</body>
    </note> 
