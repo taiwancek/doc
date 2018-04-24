@@ -1484,7 +1484,7 @@ key格式為<code>&quot;token@&quot; + {user UUID} + &quot;@&quot; + {applicatio
      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">1004</span></span>,
      "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"json bind exception, system error msg"</span>
 </span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>500</code></strong></div></div></div></section><section id="firmware" class="resource-group"><h2 class="group-heading">Firmware <a href="#firmware" class="permalink">&para;</a></h2><div id="firmware-firmware" class="resource"><h3 class="resource-heading">Firmware <a href="#firmware-firmware" class="permalink">&nbsp;&para;</a></h3><div id="firmware-firmware-post" class="action post"><h4 class="action-heading"><div class="name">Add</div><a href="#firmware-firmware-post" class="method post">POST</a><code class="uri">/api/firmware/add</code></h4><p>新增韌體資訊</p>
-<h4>Example URI</h4><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname">https://cloud.altptech.com</span>/api/firmware/add</span></div><div class="title"><strong>Request</strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/x-www-form-urlencoded</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Bearer &lt;token&gt;</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+<h4>Example URI</h4><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname">https://cloud.altptech.com</span>/api/firmware/add</span></div><div class="title"><strong>Request</strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">multipart/form-data</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Bearer &lt;token&gt;</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
     product_code = <span class="hljs-number">1000</span> <span class="hljs-comment">//產品型號代碼</span>
     build_code = <span class="hljs-number">1</span> <span class="hljs-comment">//韌體版本號碼</span>
     file = binary file <span class="hljs-comment">//韌體檔案</span>
@@ -1500,9 +1500,14 @@ key格式為<code>&quot;token@&quot; + {user UUID} + &quot;@&quot; + {applicatio
     "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"build_code fail"</span>
 </span>}
 
-{
+ {
     "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">103</span></span>,
-    "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"file fail"</span>
+    "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"file name fail"</span>
+</span>}
+
+{
+    "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">102</span></span>,
+    "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"build_code is exists"</span>
 </span>}
 
 {
@@ -1513,6 +1518,16 @@ key格式為<code>&quot;token@&quot; + {user UUID} + &quot;@&quot; + {applicatio
 {
     "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">1002</span></span>,
     "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"uuid exception, system error msg"</span>
+</span>}
+
+{
+    "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">1008</span></span>,
+    "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"file upload exception, system error msg"</span>
+</span>}
+
+{
+    "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">200</span></span>,
+    "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"unknown exception, system error msg"</span>
 </span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>401</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
   "<span class="hljs-attribute">token</span>": <span class="hljs-value"><span class="hljs-string">"new jwt token"</span>
 </span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>500</code></strong></div></div><div id="firmware-firmware-get" class="action get"><h4 class="action-heading"><div class="name">Get</div><a href="#firmware-firmware-get" class="method get">GET</a><code class="uri">/api/firmware/get/?product_code=1000&amp;mode=dev</code></h4><p>取得最新韌體資訊</p>
@@ -1521,13 +1536,13 @@ key格式為<code>&quot;token@&quot; + {user UUID} + &quot;@&quot; + {applicatio
 <h4>Example URI</h4><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname">https://cloud.altptech.com</span>/api/firmware/get/?product_code=1000&mode=dev</span></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
     <span class="hljs-string">"uuid"</span>: <span class="hljs-string">"3768501d-597e-4207-824a-9ec98fd03d29"</span>,
     <span class="hljs-string">"build_code"</span>:<span class="hljs-number">2</span>,<span class="hljs-comment">//韌體版本號碼</span>
-    <span class="hljs-string">"name"</span>:<span class="hljs-string">"smartlock.bin"</span>,<span class="hljs-comment">//韌體名稱</span>
+    <span class="hljs-string">"name"</span>:<span class="hljs-string">"smartlock.bin"</span>,<span class="hljs-comment">//韌體名稱(最大64字元)</span>
     <span class="hljs-string">"url"</span>: <span class="hljs-string">"https://a.b.c/3768501d-597e-4207-824a-9ec98fd03d29.bin"</span><span class="hljs-comment">//韌體下載網址</span>
-    <span class="hljs-string">"sha256"</span>:<span class="hljs-string">"32 varchars"</span>,<span class="hljs-comment">//韌體檔案sha256</span>
-    <span class="hljs-string">"created_at"</span>: <span class="hljs-string">"2018-03-01 08:14:05"</span>
+    <span class="hljs-string">"sha256"</span>:<span class="hljs-string">"ff59be6ec92aa440fedcced874141b5075c7bc53d62283c18929820a548cd659"</span>,<span class="hljs-comment">//韌體檔案sha256(64 chars)</span>
+    <span class="hljs-string">"created_at"</span>: <span class="hljs-string">"2018-04-24 12:23:13"</span>
 }</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>400</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
     "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">103</span></span>,
-    "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"product_code not exists"</span>
+    "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"product_code fail"</span>
 </span>}
 
 {
@@ -1542,33 +1557,32 @@ key格式為<code>&quot;token@&quot; + {user UUID} + &quot;@&quot; + {applicatio
 <pre><code><span class="hljs-attribute">product_code</span>: <span class="hljs-string">產品型號代碼</span>
 <span class="hljs-attribute">page</span>: <span class="hljs-string">當前分頁。預設第一頁</span>
 <span class="hljs-attribute">limit</span>: <span class="hljs-string">每分頁最大筆數。預設10筆，最小1筆，最大50筆</span></code></pre>
-<h4>Example URI</h4><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname">https://cloud.altptech.com</span>/api/firmware/list/?product_code=1000&page=1&limit=10</span></div><div class="title"><strong>Request</strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Bearer &lt;token&gt;</span></code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>[
-    {
-        <span class="hljs-string">"uuid"</span>: <span class="hljs-string">"3768501d-597e-4207-824a-9ec98fd03d29"</span>,
-        <span class="hljs-string">"name"</span>:<span class="hljs-string">"smartlock.bin"</span>,<span class="hljs-comment">//韌體名稱</span>
-        <span class="hljs-string">"build_code"</span>:<span class="hljs-number">2</span>,<span class="hljs-comment">//韌體版本號碼</span>
-        <span class="hljs-string">"url"</span>: <span class="hljs-string">"https://a.b.c/oti.bin"</span><span class="hljs-comment">//韌體下載網址</span>
-        <span class="hljs-string">"sha256"</span>:<span class="hljs-string">"32 varchars"</span>,<span class="hljs-comment">//韌體檔案shar256</span>
-        <span class="hljs-string">"is_release"</span>:<span class="hljs-literal">true</span>,<span class="hljs-comment">//是否為正式釋出版本    </span>
-        <span class="hljs-string">"created_at"</span>: <span class="hljs-string">"2018-03-01 08:14:05"</span>
-    },
-    {
-        <span class="hljs-string">"uuid"</span>: <span class="hljs-string">"3768501d-597e-4207-1111-9ec98fd03d29"</span>,
-        <span class="hljs-string">"name"</span>:<span class="hljs-string">"smartlock.bin"</span>,<span class="hljs-comment">//韌體名稱</span>
-        <span class="hljs-string">"build_code"</span>:<span class="hljs-number">2</span>,<span class="hljs-comment">//韌體版本號碼</span>
-        <span class="hljs-string">"url"</span>: <span class="hljs-string">"device name"</span>,<span class="hljs-comment">//韌體下載網址</span>
-        <span class="hljs-string">"sha256"</span>:<span class="hljs-string">"32 varchars"</span>,<span class="hljs-comment">//韌體檔案shar256</span>
-        <span class="hljs-string">"is_release"</span>:<span class="hljs-literal">false</span><span class="hljs-comment">//是否為正式釋出版本</span>
-        <span class="hljs-string">"created_at"</span>: <span class="hljs-string">"2018-03-01 08:14:05"</span>
-    }
-]</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>400</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+<h4>Example URI</h4><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname">https://cloud.altptech.com</span>/api/firmware/list/?product_code=1000&page=1&limit=10</span></div><div class="title"><strong>Request</strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Bearer &lt;token&gt;</span></code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+    <span class="hljs-string">"total"</span>: <span class="hljs-number">2</span>,<span class="hljs-comment">//全部筆數</span>
+    <span class="hljs-string">"count"</span>: <span class="hljs-number">2</span>,<span class="hljs-comment">//當前頁面筆數</span>
+    <span class="hljs-string">"rows"</span>: [
+        {
+            <span class="hljs-string">"uuid"</span>: <span class="hljs-string">"bc1fc24d-36e7-4c74-a1b0-17ce673fcf63"</span>,
+            <span class="hljs-string">"build_code"</span>: <span class="hljs-number">2</span>, <span class="hljs-comment">//韌體版本號碼</span>
+            <span class="hljs-string">"name"</span>: <span class="hljs-string">"test.bin"</span>,<span class="hljs-comment">//韌體名稱</span>
+            <span class="hljs-string">"url"</span>: <span class="hljs-string">"http://localhost:8082/upload/firmware/bc1fc24d-36e7-4c74-a1b0-17ce673fcf63_test.bin"</span>,<span class="hljs-comment">//韌體下載網址</span>
+            <span class="hljs-string">"sha256"</span>: <span class="hljs-string">"ff59be6ec92aa440fedcced874141b5075c7bc53d62283c18929820a548cd659"</span>,<span class="hljs-comment">//韌體檔案sha256</span>
+            <span class="hljs-string">"is_release"</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-string">"created_at"</span>: <span class="hljs-string">"2018-04-24 12:23:13"</span>
+        },
+        {
+            <span class="hljs-string">"uuid"</span>: <span class="hljs-string">"b0ba0436-53b6-422b-b274-75b8d6508c23"</span>,
+            <span class="hljs-string">"build_code"</span>: <span class="hljs-number">1</span>,
+            <span class="hljs-string">"name"</span>: <span class="hljs-string">"test.bin"</span>,
+            <span class="hljs-string">"url"</span>: <span class="hljs-string">"http://localhost:8082/upload/firmware/b0ba0436-53b6-422b-b274-75b8d6508c23_test.bin"</span>,
+            <span class="hljs-string">"sha256"</span>: <span class="hljs-string">"b3d05f6fa80c564e420a3a0a4c1d2b4a92ddce8e190d28632c65cc20b849fb59"</span>,
+            <span class="hljs-string">"is_release"</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">//是否為正式釋出版本</span>
+            <span class="hljs-string">"created_at"</span>: <span class="hljs-string">"2018-04-24 12:19:53"</span>
+        }
+    ]
+}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>400</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
     "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">103</span></span>,
     "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"product_code not exists"</span>
-</span>}
-
-{
-    "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">104</span></span>,
-    "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"resource no exists"</span>
 </span>}
 
 {
@@ -1578,6 +1592,9 @@ key格式為<code>&quot;token@&quot; + {user UUID} + &quot;@&quot; + {applicatio
   "<span class="hljs-attribute">token</span>": <span class="hljs-value"><span class="hljs-string">"new jwt token"</span>
 </span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>500</code></strong></div></div><div id="firmware-firmware-delete" class="action delete"><h4 class="action-heading"><div class="name">Delete</div><a href="#firmware-firmware-delete" class="method delete">DELETE</a><code class="uri">/api/firmware/delete/{uuid}</code></h4><p>刪除韌體資訊</p>
 <pre><code><span class="hljs-attribute">uuid</span>: <span class="hljs-string">firmware's uuid</span></code></pre>
+<ul>
+<li>若韌體UUID處於release狀態時，將不允許刪除(回傳code=111)！</li>
+</ul>
 <h4>Example URI</h4><div class="definition"><span class="method delete">DELETE</span>&nbsp;<span class="uri"><span class="hostname">https://cloud.altptech.com</span>/api/firmware/delete/{uuid}</span></div><div class="title"><strong>Request</strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Bearer &lt;token&gt;</span></code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong></div><div class="title"><strong>Response&nbsp;&nbsp;<code>400</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
     "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">103</span></span>,
     "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"firmware uuid is empty"</span>
@@ -1585,12 +1602,12 @@ key格式為<code>&quot;token@&quot; + {user UUID} + &quot;@&quot; + {applicatio
 
 {
     "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">104</span></span>,
-    "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"resource no exists"</span>
+    "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"firmware resource no exists"</span>
 </span>}
 
- {
+{
     "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">111</span></span>,
-    "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"now is release"</span>
+    "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"firmware resource is release mode"</span>
 </span>}
 
 {
@@ -1607,7 +1624,7 @@ key格式為<code>&quot;token@&quot; + {user UUID} + &quot;@&quot; + {applicatio
 
 {
     "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">104</span></span>,
-    "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"resource no exists"</span>
+    "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"firmware resource no exists"</span>
 </span>}
 
 {
@@ -1616,12 +1633,15 @@ key格式為<code>&quot;token@&quot; + {user UUID} + &quot;@&quot; + {applicatio
 </span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>401</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
   "<span class="hljs-attribute">token</span>": <span class="hljs-value"><span class="hljs-string">"new jwt token"</span>
 </span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>500</code></strong></div></div><div id="firmware-firmware-get-2" class="action get"><h4 class="action-heading"><div class="name">Product Code List</div><a href="#firmware-firmware-get-2" class="method get">GET</a><code class="uri">/api/firmware/code/list</code></h4><p>產品代碼列表</p>
-<h4>Example URI</h4><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname">https://cloud.altptech.com</span>/api/firmware/code/list</span></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>[
-    {
-        <span class="hljs-string">"code"</span>:<span class="hljs-number">1000</span>,<span class="hljs-comment">//產品型號代碼</span>
-        <span class="hljs-string">"name"</span>:<span class="hljs-string">"smart lock"</span>,<span class="hljs-comment">//產品型號名稱</span>
-    }
-]</code></pre><div style="height: 1px;"></div></div></div></div></div></section><section id="message" class="resource-group"><h2 class="group-heading">Message <a href="#message" class="permalink">&para;</a></h2><div id="message-message" class="resource"><h3 class="resource-heading">Message <a href="#message-message" class="permalink">&nbsp;&para;</a></h3><div id="message-message-post" class="action post"><h4 class="action-heading"><div class="name">Publish</div><a href="#message-message-post" class="method post">POST</a><code class="uri">/api/message/publish</code></h4><p>發布訊息</p>
+<h4>Example URI</h4><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname">https://cloud.altptech.com</span>/api/firmware/code/list</span></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+    <span class="hljs-string">"count"</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-string">"rows"</span>: [
+        {
+            <span class="hljs-string">"code"</span>: <span class="hljs-number">1000</span>,<span class="hljs-comment">//產品型號代碼</span>
+            <span class="hljs-string">"name"</span>: <span class="hljs-string">"smart lock"</span> <span class="hljs-comment">//產品型號名稱</span>
+        }
+    ]
+}</code></pre><div style="height: 1px;"></div></div></div></div></div></section><section id="message" class="resource-group"><h2 class="group-heading">Message <a href="#message" class="permalink">&para;</a></h2><div id="message-message" class="resource"><h3 class="resource-heading">Message <a href="#message-message" class="permalink">&nbsp;&para;</a></h3><div id="message-message-post" class="action post"><h4 class="action-heading"><div class="name">Publish</div><a href="#message-message-post" class="method post">POST</a><code class="uri">/api/message/publish</code></h4><p>發布訊息</p>
 <h4>Example URI</h4><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname">https://cloud.altptech.com</span>/api/message/publish</span></div><div class="title"><strong>Request</strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Bearer &lt;token&gt;</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
 "<span class="hljs-attribute">group_uuid</span>":<span class="hljs-value"><span class="hljs-string">"180ec87f-e2d1-45da-9e5e-e5ba1125a1cb"</span></span>,
 "<span class="hljs-attribute">message</span>":<span class="hljs-value"><span class="hljs-string">"testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest"</span></span>,
