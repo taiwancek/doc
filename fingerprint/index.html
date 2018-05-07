@@ -933,6 +933,8 @@ com_AddOn_PenDriveiFlashPro</code></pre>
     <span class="hljs-string">"password"</span>: <span class="hljs-string">"12345678"</span> <span class="hljs-comment">//(required)</span>
     <span class="hljs-string">"application"</span>:<span class="hljs-string">"fingerprint"</span>, <span class="hljs-comment">//(optional)應用程式代號，預設為fingerprint。推播會用此參數辨別設定檔案</span>
     <span class="hljs-string">"vendor_code"</span>:<span class="hljs-string">"100"</span> <span class="hljs-comment">//(optional)供應商代碼</span>
+    <span class="hljs-string">"login_from"</span>:<span class="hljs-number">1</span>,<span class="hljs-comment">//(optional,default:1)1:other,2:window,3:mac,4:android,5:ios</span>
+    <span class="hljs-string">"os_udid"</span>:<span class="hljs-string">"strings"</span><span class="hljs-comment">//(optional,default:"other")max varchars:1024</span>
 }</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
   "<span class="hljs-attribute">uuid</span>": <span class="hljs-value"><span class="hljs-string">"458f338b-dd93-46e8-a931-e687eae4f5ce"</span></span>,
   "<span class="hljs-attribute">token</span>": <span class="hljs-value"><span class="hljs-string">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEsIm5hbWUiOiJrZXZpbiBjaGFuZyIsImVtYWlsIjoid2VuY2hhbjM5MThAZ21haWwuY29tIiwiZXhwIjoxNTE0OTEwNzI2LCJpc3MiOiJqd3QifQ.IPbOcYqOldgticwLVObaq_AzaNyrJoxMs8fZVA-mI8s"</span></span>,
@@ -952,7 +954,8 @@ com_AddOn_PenDriveiFlashPro</code></pre>
         <span class="hljs-string">"3:裝置登入授權，需使用者輸入Pincode"</span>,
         <span class="hljs-string">"1001:系統錯誤"</span>,
         <span class="hljs-string">"114:vendor code fail"</span>,
-        <span class="hljs-string">"1004:json bind exception, system error msg"</span>
+        <span class="hljs-string">"1004:json bind exception, system error msg"</span>,
+        <span class="hljs-string">"104:login_from fail"</span>
       ]</span>,
       "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"錯誤碼"</span>
     </span>}</span>,
@@ -969,11 +972,14 @@ com_AddOn_PenDriveiFlashPro</code></pre>
     <span class="hljs-string">"third_type"</span>: <span class="hljs-string">"facebook"</span>, <span class="hljs-comment">//facebook or google </span>
     <span class="hljs-string">"token"</span>: <span class="hljs-string">"token string"</span>,
     <span class="hljs-string">"application"</span>:<span class="hljs-string">"fingerprint"</span>, <span class="hljs-comment">//應用程式代號，預設為fingerprint。推播會用此參數辨別設定檔案</span>
-    <span class="hljs-string">"vendor_code"</span>:<span class="hljs-string">"100"</span> <span class="hljs-comment">//(optional)供應商代碼</span>
+    <span class="hljs-string">"vendor_code"</span>:<span class="hljs-string">"100"</span>, <span class="hljs-comment">//(optional)供應商代碼</span>
+    <span class="hljs-string">"login_from"</span>:<span class="hljs-number">1</span>,<span class="hljs-comment">//(optional,default:1)裝置登入類型1:other,2:window,3:mac,4:android,5:ios</span>
+    <span class="hljs-string">"os_udid"</span>:<span class="hljs-string">"strings"</span><span class="hljs-comment">//(optional,default:"other")裝置唯一識別碼。max varchars:1024</span>
 }</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
   "<span class="hljs-attribute">uuid</span>": <span class="hljs-value"><span class="hljs-string">"458f338b-dd93-46e8-a931-e687eae4f5ce"</span></span>,
   "<span class="hljs-attribute">token</span>": <span class="hljs-value"><span class="hljs-string">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEsIm5hbWUiOiJrZXZpbiBjaGFuZyIsImVtYWlsIjoid2VuY2hhbjM5MThAZ21haWwuY29tIiwiZXhwIjoxNTE0OTEwNzI2LCJpc3MiOiJqd3QifQ.IPbOcYqOldgticwLVObaq_AzaNyrJoxMs8fZVA-mI8s"</span></span>,
-  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"kevin chang"</span>
+  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"kevin chang"</span></span>,
+  "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"test@gmail.com"</span>
 </span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>400</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">101</span></span>,
      "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"token invalid"</span> //token可能過期或其他錯誤
@@ -1003,6 +1009,12 @@ com_AddOn_PenDriveiFlashPro</code></pre>
 {
      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">104</span></span>,
      "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"user is deleted"</span> //帳號已經被刪除
+</span>}
+
+{
+ "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">104</span></span>,
+ "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"login_from fail"</span> //登入型態不合法
+
 </span>}
 
 {
@@ -2618,7 +2630,7 @@ smart lock-python: <span class="hljs-number">1001</span></code></pre>
   "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"download key not exists"</span>
 </span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>401</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Body</h5><pre><code>{
     "<span class="hljs-attribute">token</span>": <span class="hljs-value"><span class="hljs-string">"new token"</span>  //token有值可儲存下次api呼叫使用，若無值需重新登入
-</span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>500</code></strong></div></div></div></section></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 05 May 2018</p><script>/* eslint-env browser */
+</span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>500</code></strong></div></div></div></section></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 07 May 2018</p><script>/* eslint-env browser */
 /* eslint quotes: [2, "single"] */
 'use strict';
 
