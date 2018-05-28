@@ -1796,10 +1796,16 @@ smart lock-python: <span class="hljs-number">1001</span></code></pre>
 </span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>500</code></strong></div></div></div><div id="store-update-ios-receipt" class="resource"><h3 class="resource-heading">Update iOS Receipt <a href="#store-update-ios-receipt" class="permalink">&nbsp;&para;</a></h3><div id="store-update-ios-receipt-post" class="action post"><h4 class="action-heading"><div class="name">Update iOS Receipt</div><a href="#store-update-ios-receipt-post" class="method post">POST</a><code class="uri">/api/store/update_ios_receipt</code></h4><p>上傳iOS購買收據</p>
 <ul>
 <li>
-<p>上傳成功時，會同時與apple驗證收據購買內容</p>
+<p>呼叫登入API時需給予『application』欄位</p>
 </li>
 <li>
-<p><a href="http://www.cnblogs.com/zhaoqingqing/p/4597794.html">收據欄位參考</a></p>
+<p>上傳時，會先向Apple取得購買明細，取得成功才會回應成功(200)，若取得失敗會回覆『收據錯誤代碼』</p>
+</li>
+<li>
+<p><a href="http://www.cnblogs.com/zhaoqingqing/p/4597794.html">購買明細欄位參考</a></p>
+</li>
+<li>
+<p><a href="https://www.jianshu.com/p/ebdeea271352">in_app与latest_receipt_info差異參考</a></p>
 </li>
 <li>
 <p>收據錯誤代碼：</p>
@@ -1815,7 +1821,7 @@ smart lock-python: <span class="hljs-number">1001</span></code></pre>
 <span class="hljs-number">21008</span>     receipt是生产receipt，但却发送至Sandbox环境的验证服务</code></pre>
 <h4>Example URI</h4><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname">https://cloud.altptech.com</span>/api/store/update_ios_receipt</span></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
   "<span class="hljs-attribute">receipt_base64</span>": <span class="hljs-value"><span class="hljs-string">"base64 string"</span></span>,
-  "<span class="hljs-attribute">password</span>": <span class="hljs-value"><span class="hljs-string">""</span>
+  "<span class="hljs-attribute">password</span>": <span class="hljs-value"><span class="hljs-string">"weflkj342l3j4l2k34j2dsf23"</span>
 </span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>400</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
      <span class="hljs-string">"code"</span>: {收據錯誤代碼}
 }
@@ -1828,6 +1834,11 @@ smart lock-python: <span class="hljs-number">1001</span></code></pre>
 {
      <span class="hljs-string">"code"</span>: <span class="hljs-number">103</span>,
      <span class="hljs-string">"msg"</span>: <span class="hljs-string">"password fail"</span>
+}
+
+{
+     <span class="hljs-string">"code"</span>: <span class="hljs-number">115</span>,
+     <span class="hljs-string">"msg"</span>: <span class="hljs-string">"application code not exist"</span>
 }
 
 {
