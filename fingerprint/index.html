@@ -1775,11 +1775,18 @@ smart lock-python: <span class="hljs-number">1001</span></code></pre>
         <span class="hljs-number">1005</span>: <span class="hljs-number">60</span>,
         <span class="hljs-number">1006</span>: <span class="hljs-number">60</span>,</code></pre>
 <h4>Example URI</h4><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname">https://cloud.altptech.com</span>/api/store/state</span></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
-    <span class="hljs-string">"trial_at"</span>:<span class="hljs-string">"2018-03-26 16:27:41"</span>,<span class="hljs-comment">//開始試用時間</span>
+    <span class="hljs-string">"trial_at"</span>:<span class="hljs-string">"2018-05-29T17:43:30+08:00"</span>,<span class="hljs-comment">//開始試用時間(RFC3339)</span>
     <span class="hljs-string">"trial_over_day"</span>:<span class="hljs-number">60</span>,<span class="hljs-comment">//剩餘試用天數</span>
-    <span class="hljs-string">"is_trial_period"</span>:<span class="hljs-literal">false</span><span class="hljs-comment">//狀態是否為試用期間</span>
-    <span class="hljs-string">"last_purchase_at"</span>:<span class="hljs-string">"2018-03-26 16:27:41"</span>,<span class="hljs-comment">//最後一次付費時間</span>
-    <span class="hljs-string">"purchase_over_day"</span>:<span class="hljs-number">60</span>,<span class="hljs-comment">//付費有效時間。會有負的天數，代表過了試用天數</span>
+    <span class="hljs-string">"is_trial_period"</span>: <span class="hljs-literal">false</span>,<span class="hljs-comment">//是否為試用期間。當last_receipt_info有記錄時，將設定為false</span>
+    <span class="hljs-string">"ios_receipt"</span>:[
+        <span class="hljs-string">"last_receipt_info"</span>:[<span class="hljs-comment">//自動續訂型訂閱與非續訂型訂閱購買。若有多筆相同product_id時，只會取最新紀錄</span>
+            {
+                <span class="hljs-string">"product_id"</span>:<span class="hljs-string">"com.protop4me.globalkey.subscription"</span>
+                <span class="hljs-string">"purchase_date"</span>:<span class="hljs-string">"2018-05-30T01:05:09+08:00"</span>,<span class="hljs-comment">//購買日期(RFC3339)</span>
+                <span class="hljs-string">"expires_date"</span>:<span class="hljs-string">"2018-05-30T01:10:09+08:00"</span><span class="hljs-comment">//過期日期(RFC3339)</span>
+            }
+        ]
+    ]
 }</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>400</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">115</span></span>,
      "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"Application Code not exists"</span>
@@ -1805,6 +1812,12 @@ smart lock-python: <span class="hljs-number">1001</span></code></pre>
 <p><a href="http://www.cnblogs.com/zhaoqingqing/p/4597794.html">購買明細欄位參考</a></p>
 </li>
 <li>
+<p><a href="https://developer.apple.com/library/content/releasenotes/General/ValidateAppStoreReceipt/Chapters/ReceiptFields.html">官方欄位說明參考</a></p>
+</li>
+<li>
+<p><a href="http://blog.tworks.jp/">ios receipt版本問題</a></p>
+</li>
+<li>
 <p><a href="https://www.jianshu.com/p/ebdeea271352">in_app与latest_receipt_info差異參考</a>
 <br/></p>
 </li>
@@ -1818,6 +1831,10 @@ smart lock-python: <span class="hljs-number">1001</span></code></pre>
   <span class="hljs-number">21006</span>     receipt合法，但是订阅已过期。服务器接收到这个状态码时，receipt数据仍然会解码并一起发送
   <span class="hljs-number">21007</span>     receipt是Sandbox receipt，但却发送至生产系统的验证服务
   <span class="hljs-number">21008</span>     receipt是生产receipt，但却发送至Sandbox环境的验证服务</code></pre>
+</li>
+<li>
+<p>查看票據明細</p>
+<pre><code>curl -<span class="hljs-keyword">d</span>'{<span class="hljs-string">"password"</span>:<span class="hljs-string">""</span>,<span class="hljs-string">"receipt-data"</span>:<span class="hljs-string">""</span>}' https:<span class="hljs-comment">//sandbox.itunes.apple.com/verifyReceipt </span></code></pre>
 </li>
 </ul>
 <h4>Example URI</h4><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname">https://cloud.altptech.com</span>/api/store/update_ios_receipt</span></div><div class="title"><strong>Request</strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Bearer &lt;token&gt;</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
@@ -2779,7 +2796,7 @@ smart lock-python: <span class="hljs-number">1001</span></code></pre>
   "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"download key not exists"</span>
 </span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>401</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Body</h5><pre><code>{
     "<span class="hljs-attribute">token</span>": <span class="hljs-value"><span class="hljs-string">"new token"</span>  //token有值可儲存下次api呼叫使用，若無值需重新登入
-</span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>500</code></strong></div></div></div></section></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 28 May 2018</p><script>/* eslint-env browser */
+</span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>500</code></strong></div></div></div></section></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 30 May 2018</p><script>/* eslint-env browser */
 /* eslint quotes: [2, "single"] */
 'use strict';
 
