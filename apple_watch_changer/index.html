@@ -48,7 +48,8 @@
     <span class="hljs-keyword">enable</span>               bool <span class="hljs-keyword">DEFAULT</span> <span class="hljs-literal">true</span> <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
     created_at           timestamptz <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">current_timestamp</span> <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
     updated_at           timestamptz <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">current_timestamp</span> <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
-    <span class="hljs-keyword">CONSTRAINT</span> pk_material_id PRIMARY <span class="hljs-keyword">KEY</span> ( <span class="hljs-keyword">id</span> )
+    <span class="hljs-keyword">CONSTRAINT</span> pk_material_id PRIMARY <span class="hljs-keyword">KEY</span> ( <span class="hljs-keyword">id</span> ),
+    <span class="hljs-keyword">CONSTRAINT</span> material_sn_uniqus <span class="hljs-keyword">UNIQUE</span> (sn)
  );</span>
 
 COMMENT ON TABLE material IS '材料表';
