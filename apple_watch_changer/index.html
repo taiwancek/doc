@@ -60,6 +60,7 @@ COMMENT ON COLUMN material.sn_prefix IS '料號前綴英文,用來寫入裝置';
 ================================================
 <span class="hljs-operator"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> prod_record ( 
     <span class="hljs-keyword">id</span>                   bigserial  <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
+    material_id          <span class="hljs-built_in">bigint</span>  <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
     user_uuid            <span class="hljs-keyword">uuid</span>  <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
     <span class="hljs-keyword">start</span>                <span class="hljs-built_in">integer</span>  <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
     <span class="hljs-keyword">num</span>                  <span class="hljs-built_in">integer</span>  <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
@@ -74,7 +75,6 @@ COMMENT ON COLUMN prod_record.num IS '申請生產數量';
 ================================================
 <span class="hljs-operator"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> prod_product_sn ( 
     <span class="hljs-keyword">id</span>                   bigserial  <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
-    sn_id                <span class="hljs-built_in">bigint</span>  <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
     p_record_id          <span class="hljs-built_in">bigint</span>  <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
     udid                 <span class="hljs-built_in">varchar</span>(<span class="hljs-number">32</span>)  <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
     <span class="hljs-keyword">result</span>               <span class="hljs-built_in">smallint</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-number">0</span> <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
@@ -84,7 +84,6 @@ COMMENT ON COLUMN prod_record.num IS '申請生產數量';
  );</span>
 
 COMMENT ON TABLE prod_product_sn IS '產品序號表';
-COMMENT ON COLUMN prod_product_sn.sn_id IS '料號ID';
 COMMENT ON COLUMN prod_product_sn.p_record_id IS '產品序號申請ID';
 COMMENT ON COLUMN prod_product_sn.udid IS '料號前綴英文+日期6碼(西元年月日，例如180628)+序號5碼';
 COMMENT ON COLUMN prod_product_sn.result IS '格式: 0:未回傳結果(預設)|1:產品序號寫入成功|2:產品序號寫入失敗';</code></pre>
@@ -453,23 +452,18 @@ com_AddOn_PenDriveiFlashPro</code></pre>
     <span class="hljs-string">"model_number"</span>:<span class="hljs-string">"AB-0001"</span>, <span class="hljs-comment">//至少1字元，最多64字元</span>
     <span class="hljs-string">"serial_number"</span>:<span class="hljs-string">"AB-0001"</span>, <span class="hljs-comment">//至少1字元，最多64字元</span>
 }</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong></div><div class="title"><strong>Response&nbsp;&nbsp;<code>400</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
-    "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">102</span></span>,
-    "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"sn exists"</span>
-</span>}
-
-{
     "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">103</span></span>,
-    "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"field fail"</span>
+    "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"{param field} fail"</span>
 </span>}
 
 {
     "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">1001</span></span>,
-    "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"system error msg"</span>
+    "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"db exception, system error msg"</span>
 </span>}
 
 {
-    "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">1002</span></span>,
-    "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"system error msg"</span>
+    "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">1004</span></span>,
+    "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"param bind exception, system error msg"</span>
 </span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>401</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
   "<span class="hljs-attribute">token</span>": <span class="hljs-value"><span class="hljs-string">"new jwt token"</span>
 </span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>500</code></strong></div></div></div><div id="材料-update" class="resource"><h3 class="resource-heading">Update <a href="#材料-update" class="permalink">&nbsp;&para;</a></h3><div id="材料-update-patch" class="action patch"><h4 class="action-heading"><div class="name">Update</div><a href="#材料-update-patch" class="method patch">PATCH</a><code class="uri">/api/material/update?id=</code></h4><p>修改材料</p>
@@ -484,18 +478,18 @@ com_AddOn_PenDriveiFlashPro</code></pre>
     <span class="hljs-string">"serial_number"</span>:<span class="hljs-string">"AB-0001"</span>, <span class="hljs-comment">//至少1字元，最多64字元</span>
     <span class="hljs-string">"enable"</span>:<span class="hljs-literal">true</span>
 }</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong></div><div class="title"><strong>Response&nbsp;&nbsp;<code>400</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+    "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">102</span></span>,
+    "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"id not exists"</span>
+</span>}
+
+{
     "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">103</span></span>,
     "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"field fail"</span>
 </span>}
 
 {
     "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">1001</span></span>,
-    "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"system error msg"</span>
-</span>}
-
-{
-    "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">1002</span></span>,
-    "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"system error msg"</span>
+    "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"db exception, system error msg"</span>
 </span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>401</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
   "<span class="hljs-attribute">token</span>": <span class="hljs-value"><span class="hljs-string">"new jwt token"</span>
 </span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>500</code></strong></div></div></div><div id="材料-get" class="resource"><h3 class="resource-heading">Get <a href="#材料-get" class="permalink">&nbsp;&para;</a></h3><div id="材料-get-get" class="action get"><h4 class="action-heading"><div class="name">Get</div><a href="#材料-get-get" class="method get">GET</a><code class="uri">/api/material/get?id=</code></h4><p>取得單筆材料</p>
@@ -513,13 +507,8 @@ com_AddOn_PenDriveiFlashPro</code></pre>
     "<span class="hljs-attribute">created_at</span>":<span class="hljs-value"><span class="hljs-string">"2018-03-26T16:27:41+08:00"</span></span>,
     "<span class="hljs-attribute">server_date</span>":<span class="hljs-value"><span class="hljs-string">"180625"</span> //伺服器當日日期
 </span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>400</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
-    "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">1001</span></span>,
-    "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"system error msg"</span>
-</span>}
-
-{
-    "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">1002</span></span>,
-    "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"system error msg"</span>
+  "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">1001</span></span>,
+  "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"db exception, system error msg"</span>
 </span>}</code></pre><div style="height: 1px;"></div></div></div></div></div><div id="材料-list" class="resource"><h3 class="resource-heading">List <a href="#材料-list" class="permalink">&nbsp;&para;</a></h3><div id="材料-list-get" class="action get"><h4 class="action-heading"><div class="name">List</div><a href="#材料-list-get" class="method get">GET</a><code class="uri">/api/material/list?enable=</code></h4><p>取得材料列表</p>
 <pre><code><span class="hljs-built_in">enable</span>: 若為<span class="hljs-literal">true</span>則只會顯示被啟用的材料。預設為<span class="hljs-literal">false</span></code></pre>
 <h4>Example URI</h4><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname">http://192.168.1.1</span>/api/material/list?enable=</span></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
@@ -551,8 +540,13 @@ com_AddOn_PenDriveiFlashPro</code></pre>
 <h4>Example URI</h4><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname">http://192.168.1.1</span>/api/prod_record/create</span></div><div class="title"><strong>Request</strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
     <span class="hljs-string">"user_uuid"</span>:<span class="hljs-string">"458f338b-dd93-46e8-a931-e687eae4f5ce"</span>, <span class="hljs-comment">//使用者UUID</span>
     <span class="hljs-string">"sn"</span>:<span class="hljs-string">"AB0001"</span>,<span class="hljs-comment">//料號</span>
-    <span class="hljs-string">"num"</span>:<span class="hljs-number">100</span><span class="hljs-comment">//預計產生100組序號</span>
-}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong></div><div class="title"><strong>Response&nbsp;&nbsp;<code>400</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+    <span class="hljs-string">"num"</span>:<span class="hljs-number">100</span><span class="hljs-comment">//預計產生100組序號。限制1~10萬</span>
+}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+    <span class="hljs-string">"first_udid"</span>: <span class="hljs-string">"AB18070100051"</span>, <span class="hljs-comment">//第一筆UDID</span>
+    <span class="hljs-string">"last_udid"</span>: <span class="hljs-string">"AB18070100060"</span>, <span class="hljs-comment">//最後一筆UDID</span>
+    <span class="hljs-string">"num"</span>: <span class="hljs-number">10</span>,
+    <span class="hljs-string">"start"</span>: <span class="hljs-number">51</span>
+}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>400</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
     "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">101</span></span>,
     "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"user_uuid not exists"</span>
 </span>}
@@ -564,17 +558,17 @@ com_AddOn_PenDriveiFlashPro</code></pre>
 
 {
     "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">103</span></span>,
-    "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"field fail"</span>
+    "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"num must be greater than 0, and less than 100,000"</span>
 </span>}
 
 {
     "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">1001</span></span>,
-    "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"system error msg"</span>
+    "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"db exception, system error msg"</span>
 </span>}
 
 {
-    "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">1002</span></span>,
-    "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"system error msg"</span>
+    "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">1004</span></span>,
+    "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"json bind exception, system error msg"</span>
 </span>}</code></pre><div style="height: 1px;"></div></div></div></div></div><div id="產品序號申請記錄-get" class="resource"><h3 class="resource-heading">Get <a href="#產品序號申請記錄-get" class="permalink">&nbsp;&para;</a></h3><div id="產品序號申請記錄-get-get" class="action get"><h4 class="action-heading"><div class="name">Get</div><a href="#產品序號申請記錄-get-get" class="method get">GET</a><code class="uri">/api/prod_record/get?user_uuid=</code></h4><p>取得當日申請序號資訊</p>
 <pre><code><span class="hljs-attribute">user_uuid</span>: <span class="hljs-string">使用者UUID</span></code></pre>
 <h4>Example URI</h4><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname">http://192.168.1.1</span>/api/prod_record/get?user_uuid=</span></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
@@ -672,7 +666,7 @@ com_AddOn_PenDriveiFlashPro</code></pre>
 {
     "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">1002</span></span>,
     "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"system error msg"</span>
-</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></section></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 29 Jun 2018</p><script>/* eslint-env browser */
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></section></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 01 Jul 2018</p><script>/* eslint-env browser */
 /* eslint quotes: [2, "single"] */
 'use strict';
 
