@@ -45,6 +45,9 @@
 <li>
 <p>生產序號規則：料號前綴英文(從server取得)+日期6碼(西元月日，例如180628。從server取得)+序號5碼(server自動產生)</p>
 </li>
+<li>
+<p>每日申請序號只限制當日使用(日期以伺服器日期為主)</p>
+</li>
 </ul>
 <h1 id="header-db-schema">DB Schema <a class="permalink" href="#header-db-schema" aria-hidden="true">¶</a></h1>
 <pre><code>migrate <span class="hljs-operator"><span class="hljs-keyword">start</span> <span class="hljs-built_in">number</span>: <span class="hljs-number">00043</span>
@@ -467,7 +470,6 @@ com_AddOn_PenDriveiFlashPro</code></pre>
     <span class="hljs-string">"vendor_name"</span>:<span class="hljs-string">"AB-0001"</span>, <span class="hljs-comment">//至少1字元，最多64字元</span>
     <span class="hljs-string">"product_name"</span>:<span class="hljs-string">"AB-0001"</span>, <span class="hljs-comment">//至少1字元，最多64字元</span>
     <span class="hljs-string">"model_number"</span>:<span class="hljs-string">"AB-0001"</span>, <span class="hljs-comment">//至少1字元，最多64字元</span>
-    <span class="hljs-string">"serial_number"</span>:<span class="hljs-string">"AB-0001"</span>, <span class="hljs-comment">//至少1字元，最多64字元</span>
     <span class="hljs-string">"enable"</span>:<span class="hljs-literal">true</span>
 }</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong></div><div class="title"><strong>Response&nbsp;&nbsp;<code>400</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
     "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">103</span></span>,
@@ -493,7 +495,6 @@ com_AddOn_PenDriveiFlashPro</code></pre>
     <span class="hljs-string">"vendor_name"</span>:<span class="hljs-string">"AB-0001"</span>, <span class="hljs-comment">//至少1字元，最多64字元</span>
     <span class="hljs-string">"product_name"</span>:<span class="hljs-string">"AB-0001"</span>, <span class="hljs-comment">//至少1字元，最多64字元</span>
     <span class="hljs-string">"model_number"</span>:<span class="hljs-string">"AB-0001"</span>, <span class="hljs-comment">//至少1字元，最多64字元</span>
-    <span class="hljs-string">"serial_number"</span>:<span class="hljs-string">"AB-0001"</span>, <span class="hljs-comment">//至少1字元，最多64字元</span>
     <span class="hljs-string">"enable"</span>:<span class="hljs-literal">true</span>
 }</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong></div><div class="title"><strong>Response&nbsp;&nbsp;<code>400</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
     "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">102</span></span>,
@@ -521,7 +522,6 @@ com_AddOn_PenDriveiFlashPro</code></pre>
     "<span class="hljs-attribute">vendor_name</span>":<span class="hljs-value"><span class="hljs-string">"AB-0001"</span></span>, 
     "<span class="hljs-attribute">product_name</span>":<span class="hljs-value"><span class="hljs-string">"AB-0001"</span></span>, 
     "<span class="hljs-attribute">model_number</span>":<span class="hljs-value"><span class="hljs-string">"AB-0001"</span></span>, 
-    "<span class="hljs-attribute">serial_number</span>":<span class="hljs-value"><span class="hljs-string">"AB-0001"</span></span>, 
     "<span class="hljs-attribute">created_at</span>":<span class="hljs-value"><span class="hljs-string">"2018-06-30T18:50:23.511095+08:00"</span></span>,
     "<span class="hljs-attribute">server_date</span>":<span class="hljs-value"><span class="hljs-string">"180625"</span> //伺服器當日日期
 </span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>400</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
@@ -541,7 +541,6 @@ com_AddOn_PenDriveiFlashPro</code></pre>
             "<span class="hljs-attribute">vendor_name</span>":<span class="hljs-value"><span class="hljs-string">"AB-0001"</span></span>, 
             "<span class="hljs-attribute">product_name</span>":<span class="hljs-value"><span class="hljs-string">"AB-0001"</span></span>, 
             "<span class="hljs-attribute">model_number</span>":<span class="hljs-value"><span class="hljs-string">"AB-0001"</span></span>, 
-            "<span class="hljs-attribute">serial_number</span>":<span class="hljs-value"><span class="hljs-string">"AB-0001"</span></span>, 
             "<span class="hljs-attribute">created_at</span>":<span class="hljs-value"><span class="hljs-string">"2018-06-30T18:50:23.511095+08:00"</span></span>,
             "<span class="hljs-attribute">updated_at</span>": <span class="hljs-value"><span class="hljs-string">"2018-07-01T00:24:00.292992+08:00"</span></span>,
             "<span class="hljs-attribute">server_date</span>":<span class="hljs-value"><span class="hljs-string">"180625"</span> //伺服器當日日期
@@ -652,9 +651,10 @@ com_AddOn_PenDriveiFlashPro</code></pre>
 </span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></section><section id="產品序號" class="resource-group"><h2 class="group-heading">產品序號 <a href="#產品序號" class="permalink">&para;</a></h2><div id="產品序號-get" class="resource"><h3 class="resource-heading">Get <a href="#產品序號-get" class="permalink">&nbsp;&para;</a></h3><div id="產品序號-get-get" class="action get"><h4 class="action-heading"><div class="name">Get</div><a href="#產品序號-get-get" class="method get">GET</a><code class="uri">/api/prod_product_sn/get?udid=</code></h4><p>取得單筆產品序號結果</p>
 <pre><code>udid: 料號前綴英文(sn_prefix)+日期<span class="hljs-number">6</span>碼(西元年月日，例如<span class="hljs-number">180628</span>。server_date欄位)+序號<span class="hljs-number">5</span>碼</code></pre>
 <h4>Example URI</h4><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname">http://192.168.1.1</span>/api/prod_product_sn/get?udid=</span></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
-    "<span class="hljs-attribute">udid</span>": <span class="hljs-value"><span class="hljs-string">"AB18070100001"</span></span>,
-    "<span class="hljs-attribute">result</span>":<span class="hljs-value"><span class="hljs-number">0</span> //格式: <span class="hljs-number">0</span>:未設定，<span class="hljs-number">1</span>:產品序號寫入成功，<span class="hljs-number">2</span>:產品序號寫入失敗
-</span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>400</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+    <span class="hljs-string">"udid"</span>: <span class="hljs-string">"AB18070100001"</span>,
+    <span class="hljs-string">"is_expired"</span>:<span class="hljs-literal">false</span>,<span class="hljs-comment">//true代表udid日期已經非當日日期</span>
+    <span class="hljs-string">"result"</span>:<span class="hljs-number">0</span> <span class="hljs-comment">//格式: 0:未設定，1:產品序號寫入成功，2:產品序號寫入失敗</span>
+}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>400</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
   "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">101</span></span>,
   "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"udid not exists"</span>
 </span>}</code></pre><div style="height: 1px;"></div></div></div></div></div><div id="產品序號-update" class="resource"><h3 class="resource-heading">Update <a href="#產品序號-update" class="permalink">&nbsp;&para;</a></h3><div id="產品序號-update-patch" class="action patch"><h4 class="action-heading"><div class="name">Update</div><a href="#產品序號-update-patch" class="method patch">PATCH</a><code class="uri">/api/prod_product_sn/update</code></h4><p>修改單筆產品序號結果</p>
@@ -685,7 +685,7 @@ com_AddOn_PenDriveiFlashPro</code></pre>
 {
     "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">1002</span></span>,
     "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"system error msg"</span>
-</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></section></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 05 Jul 2018</p><script>/* eslint-env browser */
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></section></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 12 Jul 2018</p><script>/* eslint-env browser */
 /* eslint quotes: [2, "single"] */
 'use strict';
 
