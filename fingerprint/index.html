@@ -1784,6 +1784,7 @@ smart lock-python: <span class="hljs-number">1001</span></code></pre>
 <h4>Example URI</h4><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname">https://cloud.altptech.com</span>/api/store/state</span></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
     <span class="hljs-string">"trial_at"</span>:<span class="hljs-string">"2018-05-29T17:43:30+08:00"</span>,<span class="hljs-comment">//開始試用時間(RFC3339)</span>
     <span class="hljs-string">"trial_over_day"</span>:<span class="hljs-number">60</span>,<span class="hljs-comment">//剩餘試用天數</span>
+    <span class="hljs-string">"max_over_day"</span>:<span class="hljs-number">100</span>,<span class="hljs-comment">//(試用期,ios過期,android過期)取最大可用天數</span>
     <span class="hljs-string">"is_trial_period"</span>: <span class="hljs-literal">false</span>,<span class="hljs-comment">//是否為試用期間。當last_receipt_info有記錄時，將設定為false</span>
     <span class="hljs-string">"ios_receipt"</span>:[
         <span class="hljs-string">"last_receipt_info"</span>:[<span class="hljs-comment">//自動續訂型訂閱與非續訂型訂閱購買。若有多筆相同product_id時，只會取最新紀錄</span>
@@ -1791,7 +1792,7 @@ smart lock-python: <span class="hljs-number">1001</span></code></pre>
                 <span class="hljs-string">"product_id"</span>:<span class="hljs-string">"com.protop4me.globalkey.subscription"</span>
                 <span class="hljs-string">"purchase_date"</span>:<span class="hljs-string">"2018-05-30T01:05:09+08:00"</span>,<span class="hljs-comment">//購買日期(RFC3339)</span>
                 <span class="hljs-string">"expires_date"</span>:<span class="hljs-string">"2018-05-30T01:10:09+08:00"</span>,<span class="hljs-comment">//過期日期(RFC3339)</span>
-                <span class="hljs-string">"over_day"</span>:<span class="hljs-number">10</span><span class="hljs-comment">//剩餘可用天數。不滿一天也會算一天</span>
+                <span class="hljs-string">"over_day"</span>:<span class="hljs-number">100</span><span class="hljs-comment">//剩餘可用天數。不滿一天也會算一天</span>
             }
         ]
     ],
@@ -1810,7 +1811,7 @@ smart lock-python: <span class="hljs-number">1001</span></code></pre>
             <span class="hljs-string">"product_id"</span>: <span class="hljs-string">"sub_test_1"</span>,
             <span class="hljs-string">"purchase_date"</span>: <span class="hljs-string">"1970-01-01T16:36:40+08:00"</span>,
             <span class="hljs-string">"expires_date"</span>: <span class="hljs-string">"2018-10-29T16:25:12+08:00"</span>,
-            <span class="hljs-string">"over_day"</span>: <span class="hljs-number">0</span>
+            <span class="hljs-string">"over_day"</span>: <span class="hljs-number">10</span>
         }
     ]
 
