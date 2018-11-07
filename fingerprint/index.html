@@ -880,10 +880,17 @@ goosedownto <span class="hljs-number">00001</span>
 <ul>
 <li>application:</li>
 </ul>
-<pre><code><span class="hljs-title">filex</span>
-smartkey
-com_altptech_filecrox
-com_AddOn_PenDriveiFlashPro</code></pre>
+<pre><code><span class="hljs-bullet">* </span>filex
+<span class="hljs-bullet">* </span>smartkey
+<span class="hljs-bullet">* </span>com<span class="hljs-emphasis">_altptech_</span>filecrox
+<span class="hljs-bullet">* </span>com<span class="hljs-emphasis">_AddOn_</span>PenDriveiFlashPro
+<span class="hljs-bullet">* </span>kevin_smdrive
+<span class="hljs-bullet">* </span>com<span class="hljs-emphasis">_protop4me_</span>gpid
+<span class="hljs-bullet">* </span>com<span class="hljs-emphasis">_altrump_</span>iot
+<span class="hljs-bullet">* </span>com<span class="hljs-emphasis">_altptech_</span>globalkey
+<span class="hljs-bullet">* </span>com<span class="hljs-emphasis">_altptech_</span>iflash02
+<span class="hljs-bullet">* </span>Entree<span class="hljs-emphasis">_Smart_</span>ID
+<span class="hljs-bullet">* </span>StoragePlus<span class="hljs-emphasis">_Backup_</span>Util</code></pre>
 <h4>Example URI</h4><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname">https://cloud.altptech.com</span>/v2/api/user/login</span></div><div class="title"><strong>Request</strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
     <span class="hljs-string">"email"</span>: <span class="hljs-string">"account@gmail.com"</span>, <span class="hljs-comment">//(required)</span>
     <span class="hljs-string">"password"</span>: <span class="hljs-string">"12345678"</span> <span class="hljs-comment">//(required)</span>
@@ -1643,12 +1650,18 @@ smart lock-python: <span class="hljs-number">1001</span></code></pre>
 <ul>
 <li>應用程式代碼：</li>
 </ul>
-<pre><code>{
+<pre><code>{   
         "<span class="hljs-attribute">filex</span>":                       <span class="hljs-value"><span class="hljs-number">1000</span></span>,
         "<span class="hljs-attribute">smartkey</span>":                    <span class="hljs-value"><span class="hljs-number">1001</span></span>,
         "<span class="hljs-attribute">com_altptech_filecrox</span>":       <span class="hljs-value"><span class="hljs-number">1002</span></span>,
         "<span class="hljs-attribute">com_AddOn_PenDriveiFlashPro</span>": <span class="hljs-value"><span class="hljs-number">1003</span></span>,
-        "<span class="hljs-attribute">kevin_test_dc</span>":               <span class="hljs-value"><span class="hljs-number">1004</span></span>,
+        "<span class="hljs-attribute">kevin_smdrive</span>":               <span class="hljs-value"><span class="hljs-number">1004</span></span>,
+        "<span class="hljs-attribute">com_protop4me_gpid</span>":          <span class="hljs-value"><span class="hljs-number">1005</span></span>,
+        "<span class="hljs-attribute">com_altrump_iot</span>":             <span class="hljs-value"><span class="hljs-number">1006</span></span>,
+        "<span class="hljs-attribute">com_altptech_globalkey</span>":      <span class="hljs-value"><span class="hljs-number">1007</span></span>,
+        "<span class="hljs-attribute">com_altptech_iflash02</span>":       <span class="hljs-value"><span class="hljs-number">1008</span></span>,
+        "<span class="hljs-attribute">Entree_Smart_ID</span>":             <span class="hljs-value"><span class="hljs-number">1009</span></span>,
+        "<span class="hljs-attribute">StoragePlus_Backup_Util</span>":     <span class="hljs-value"><span class="hljs-number">1010</span></span>,
 }</code></pre>
 <h4>Example URI</h4><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname">https://cloud.altptech.com</span>/api/push_noti/application/list</span></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
   "<span class="hljs-attribute">count</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
@@ -1772,6 +1785,10 @@ smart lock-python: <span class="hljs-number">1001</span></code></pre>
         <span class="hljs-string">"kevin_smdrive"</span>:               <span class="hljs-number">1004</span>,
         <span class="hljs-string">"com_protop4me_gpid"</span>:          <span class="hljs-number">1005</span>,
         <span class="hljs-string">"com_altrump_iot"</span>:             <span class="hljs-number">1006</span>,
+        <span class="hljs-string">"com_altptech_globalkey"</span>:      <span class="hljs-number">1007</span>,
+        <span class="hljs-string">"com_altptech_iflash02"</span>:       <span class="hljs-number">1008</span>,
+        <span class="hljs-string">"Entree_Smart_ID"</span>:             <span class="hljs-number">1009</span>,
+        <span class="hljs-string">"StoragePlus_Backup_Util"</span>:     <span class="hljs-number">1010</span>,
 
 <span class="hljs-comment">//預設試用天數</span>
         <span class="hljs-number">1000</span>: <span class="hljs-number">60</span>,
@@ -2869,6 +2886,8 @@ smart lock-python: <span class="hljs-number">1001</span></code></pre>
 <span class="hljs-bullet">* </span>com<span class="hljs-emphasis">_altrump_</span>iot
 <span class="hljs-bullet">* </span>com<span class="hljs-emphasis">_altptech_</span>globalkey
 <span class="hljs-bullet">* </span>com<span class="hljs-emphasis">_altptech_</span>iflash02
+<span class="hljs-bullet">* </span>Entree<span class="hljs-emphasis">_Smart_</span>ID
+<span class="hljs-bullet">* </span>StoragePlus<span class="hljs-emphasis">_Backup_</span>Util
 
 user_uuid:使用者識別UUID，可自定義。
 
@@ -2886,7 +2905,7 @@ user_uuid:使用者識別UUID，可自定義。
 {
     "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">119</span></span>,
     "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"file exception, system error msg"</span>
-</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></section></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 05 Nov 2018</p><script>/* eslint-env browser */
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></section></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 07 Nov 2018</p><script>/* eslint-env browser */
 /* eslint quotes: [2, "single"] */
 'use strict';
 
