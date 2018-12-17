@@ -2876,14 +2876,21 @@ user_uuid:使用者識別UUID，可自定義。
 </span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></section><section id="share" class="resource-group"><h2 class="group-heading">Share <a href="#share" class="permalink">&para;</a></h2><h2 id="header-share-1">Share <a class="permalink" href="#header-share-1" aria-hidden="true">¶</a></h2>
 <div id="share-add" class="resource"><h3 class="resource-heading">Add <a href="#share-add" class="permalink">&nbsp;&para;</a></h3><div id="share-add-post" class="action post"><h4 class="action-heading"><div class="name">Add</div><a href="#share-add-post" class="method post">POST</a><code class="uri">/api/share/add</code></h4><p>新增一筆檔案分享授權</p>
 <ul>
-<li>若使用者還沒產生UserCode時，將會在新增一筆分享授權時，自動建立一筆新的UserCode</li>
+<li>
+<p>若使用者還沒產生UserCode時，將會在新增一筆分享授權時，自動建立一筆新的UserCode</p>
+</li>
+<li>
+<p>type:</p>
+</li>
 </ul>
+<pre><code><span class="hljs-attribute">1</span>: <span class="hljs-string">授權加密檔案分享</span>
+<span class="hljs-attribute">2</span>: <span class="hljs-string">授權加密檔案分享與解密推播通知</span></code></pre>
 <h4>Example URI</h4><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname">https://cloud.altptech.com</span>/api/share/add</span></div><div class="title"><strong>Request</strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Bearer &lt;token&gt;</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
     <span class="hljs-string">"type"</span>:<span class="hljs-number">1</span>, <span class="hljs-comment">//現階段需指定1,未來會擴展其他分享類型</span>
     <span class="hljs-string">"user_code"</span>: [ <span class="hljs-comment">//使用者代碼</span>
         <span class="hljs-string">"AABBCC"</span>
     ],
-    <span class="hljs-string">"over_day"</span>:<span class="hljs-number">3</span>,<span class="hljs-comment">//須為1~30天內</span>
+    <span class="hljs-string">"over_day"</span>:<span class="hljs-number">3</span><span class="hljs-comment">//須為1~30天內</span>
 }</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
   "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">47931668</span></span>,
   "<span class="hljs-attribute">aes128</span>": <span class="hljs-value"><span class="hljs-string">"YPSHZu2cMJ9M5wp0"</span></span>,
@@ -2919,11 +2926,16 @@ user_uuid:使用者識別UUID，可自定義。
     "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"other exception, system error msg"</span>
 </span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>401</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
   "<span class="hljs-attribute">token</span>": <span class="hljs-value"><span class="hljs-string">"new jwt token"</span>
-</span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>500</code></strong></div></div></div><div id="share-get" class="resource"><h3 class="resource-heading">Get <a href="#share-get" class="permalink">&nbsp;&para;</a></h3><div id="share-get-post" class="action post"><h4 class="action-heading"><div class="name">Get</div><a href="#share-get-post" class="method post">POST</a><code class="uri">/api/share/get/{share_code}</code></h4><p>取得檔案分享資訊</p>
+</span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>500</code></strong></div></div></div><div id="share-get" class="resource"><h3 class="resource-heading">Get <a href="#share-get" class="permalink">&nbsp;&para;</a></h3><div id="share-get-post" class="action post"><h4 class="action-heading"><div class="name">Get</div><a href="#share-get-post" class="method post">POST</a><code class="uri">/api/share/get/{share_code}?filename={filename}</code></h4><p>取得檔案分享資訊</p>
 <ul>
-<li>share_code:檔案分享代碼，8位數整數</li>
+<li>
+<p>share_code: 檔案分享代碼，8位數整數</p>
+</li>
+<li>
+<p>filename: 檔案名稱&quot;//用於推播訊息提示</p>
+</li>
 </ul>
-<h4>Example URI</h4><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname">https://cloud.altptech.com</span>/api/share/get/{share_code}</span></div><div class="title"><strong>Request</strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Bearer &lt;token&gt;</span></code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+<h4>Example URI</h4><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname">https://cloud.altptech.com</span>/api/share/get/{share_code}?filename={filename}</span></div><div class="title"><strong>Request</strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Bearer &lt;token&gt;</span></code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
     <span class="hljs-string">"aes128"</span>:<span class="hljs-string">"0n7ToGEcjdSRJCjX"</span>, <span class="hljs-comment">//當is_expire=true時則會清空此欄位</span>
     <span class="hljs-string">"is_expire"</span>:<span class="hljs-literal">false</span>,
     <span class="hljs-string">"expire_at"</span>:<span class="hljs-string">"2018-11-11T17:12:45+08:00"</span> 
@@ -2941,9 +2953,20 @@ user_uuid:使用者識別UUID，可自定義。
 "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">103</span></span>,
 "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"user_code not exists"</span>
 
+</span>}
+
+{
+    "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">104</span></span>,
+    "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"filename fail"</span>
+</span>}
+
+{
+"<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">105</span></span>,
+"<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"user_uuid  not exists"</span>
+
 </span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>401</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
   "<span class="hljs-attribute">token</span>": <span class="hljs-value"><span class="hljs-string">"new jwt token"</span>
-</span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>500</code></strong></div></div></div></section></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 07 Dec 2018</p><script>/* eslint-env browser */
+</span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>500</code></strong></div></div></div></section></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 17 Dec 2018</p><script>/* eslint-env browser */
 /* eslint quotes: [2, "single"] */
 'use strict';
 
